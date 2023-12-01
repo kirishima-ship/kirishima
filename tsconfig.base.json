@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "Node16",
+        "moduleResolution": "node16",
+        "lib": ["ES2022"],
+        "strict": true,
+        "composite": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "useDefineForClassFields": true,
+        "skipLibCheck": true,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "importsNotUsedAsValues": "remove",
+        "resolveJsonModule": false,
+        "strictNullChecks": true,
+        "verbatimModuleSyntax": false,
+        "sourceMap": true
+    },
+}

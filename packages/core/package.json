@@ -1,0 +1,39 @@
+{
+  "name": "@kirishima/core",
+  "version": "1.0.0",
+  "description": "A Core library for Kirishima Lavalink Client.",
+  "main": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --fix --ext ts",
+    "build": "tsc"
+  },
+  "type": "module",
+  "author": "kakushin-dev",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@hazmi35/eslint-config": "^11.0.0",
+    "@types/node": "^18.18.9",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.2"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "@hazmi35/eslint-config/typescript"
+    ],
+    "rules": {}
+  }
+}
