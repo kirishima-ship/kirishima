@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Robust Lavalink client for JavaScript.",
   "main": "dist",
-	"scripts": {
+  "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix"
