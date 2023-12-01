@@ -1,6 +1,6 @@
 import { URL } from "node:url";
-import { QueryError } from "src/Utilities/QueryError.js";
-import { FetchResultTypes } from "src/Utilities/ResultTypes.js";
+import { QueryError } from "../Utilities/QueryError.js";
+import { FetchResultTypes } from "../Utilities/ResultTypes.js";
 import { fetch as undiciFetch, RequestInfo, RequestInit, Response, Pool, Dispatcher } from "undici";
 
 export async function fetch<T>(input: RequestInfo, init?: RequestInit | undefined, type?: FetchResultTypes.JSON): Promise<T>;
