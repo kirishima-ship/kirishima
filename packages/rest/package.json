@@ -1,7 +1,7 @@
 {
-  "name": "@kirishima/ws",
-  "version": "0.2.5",
-  "description": "A WebSocket library for Kirishima Lavalink Client.",
+  "name": "@kirishima/rest",
+  "version": "1.0.0",
+  "description": "A Rest library for Kirishima Lavalink Client.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -22,7 +22,6 @@
   "devDependencies": {
     "@hazmi35/eslint-config": "^11.0.0",
     "@types/node": "^18.18.9",
-    "@types/ws": "^8.5.10",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.54.0",
@@ -43,17 +42,15 @@
       "@hazmi35/eslint-config/typescript"
     ],
     "rules": {
-      "@typescript-eslint/no-unnecessary-condition": "off",
-      "@typescript-eslint/no-unsafe-declaration-merging": "off",
-      "@typescript-eslint/no-base-to-string": "off"
+      "class-methods-use-this": "off",
+      "no-nested-ternary": "off",
+      "@typescript-eslint/no-unsafe-enum-comparison": "off"
     }
   },
   "dependencies": {
+    "@kirishima/fetch": "workspace:^",
     "@sapphire/async-queue": "^1.5.0",
-    "ws": "^8.14.2"
-  },
-  "optionalDependencies": {
-    "bufferutil": "^4.0.8",
-    "utf-8-validate": "^6.0.3"
+    "lavalink-api-types": "^1.1.5",
+    "undici": "^5.28.2"
   }
 }

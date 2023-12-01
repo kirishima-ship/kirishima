@@ -67,6 +67,43 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
 
+  packages/rest:
+    dependencies:
+      '@kirishima/fetch':
+        specifier: workspace:^
+        version: link:../fetch
+      '@sapphire/async-queue':
+        specifier: ^1.5.0
+        version: 1.5.0
+      lavalink-api-types:
+        specifier: ^1.1.5
+        version: 1.1.5
+      undici:
+        specifier: ^5.28.2
+        version: 5.28.2
+    devDependencies:
+      '@hazmi35/eslint-config':
+        specifier: ^11.0.0
+        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.1)(@typescript-eslint/parser@6.13.1)(eslint@8.54.0)(typescript@5.3.2)
+      '@types/node':
+        specifier: ^18.18.9
+        version: 18.19.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.13.1
+        version: 6.13.1(@typescript-eslint/parser@6.13.1)(eslint@8.54.0)(typescript@5.3.2)
+      '@typescript-eslint/parser':
+        specifier: ^6.13.1
+        version: 6.13.1(eslint@8.54.0)(typescript@5.3.2)
+      eslint:
+        specifier: ^8.54.0
+        version: 8.54.0
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
+      typescript:
+        specifier: ^5.3.2
+        version: 5.3.2
+
   packages/ws:
     dependencies:
       '@sapphire/async-queue':
@@ -898,6 +935,13 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
+  /lavalink-api-types@1.1.5:
+    resolution: {integrity: sha512-hTqAIvePssXuhCizQOaKK7ln0jQNlFkaeb+gDTwcaNprunAFVAL8bTcPDGspzY4BfbkCX0P+cnB/Noblwds2Tg==}
+    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
   /levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -1184,6 +1228,10 @@ packages:
     dependencies:
       typescript: 5.3.2
     dev: true
+
+  /tslib@2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: false
 
   /turbo-darwin-64@1.10.16:
     resolution: {integrity: sha512-+Jk91FNcp9e9NCLYlvDDlp2HwEDp14F9N42IoW3dmHI5ZkGSXzalbhVcrx3DOox3QfiNUHxzWg4d7CnVNCuuMg==}
