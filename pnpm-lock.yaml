@@ -16,6 +16,25 @@ importers:
         version: 1.10.16
 
   packages/core:
+    dependencies:
+      '@sapphire/async-queue':
+        specifier: ^1.5.0
+        version: 1.5.0
+      '@sapphire/utilities':
+        specifier: ^3.13.0
+        version: 3.13.0
+      discord-api-types:
+        specifier: ^0.37.65
+        version: 0.37.65
+      lavalink-api-types:
+        specifier: ^1.1.5
+        version: 1.1.5
+      undici:
+        specifier: ^5.28.2
+        version: 5.28.2
+      ws:
+        specifier: ^8.14.2
+        version: 8.14.2(bufferutil@4.0.8)(utf-8-validate@6.0.3)
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
@@ -303,6 +322,11 @@ packages:
 
   /@sapphire/async-queue@1.5.0:
     resolution: {integrity: sha512-JkLdIsP8fPAdh9ZZjrbHWR/+mZj0wvKS5ICibcLrRI1j84UmLMshx5n9QmL8b95d4onJ2xxiyugTgSAX7AalmA==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/utilities@3.13.0:
+    resolution: {integrity: sha512-BD5ycPjZX5dXxrAb90dJTY8ukpPVBXgU17gA5ghK2memS4hwAzFYpvK+R+6zh4d6HYIKVuqrVhGXjvZenAa/Aw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -606,6 +630,10 @@ packages:
     dependencies:
       path-type: 4.0.0
     dev: true
+
+  /discord-api-types@0.37.65:
+    resolution: {integrity: sha512-CQHW3Nu04LEHIj1Xps/sfGhTdrowilxnek2tirpLhwvrmgmLr1C6A+4JFLs+0kJMH2IX2QgDyA9GfNehqN+xPQ==}
+    dev: false
 
   /doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
