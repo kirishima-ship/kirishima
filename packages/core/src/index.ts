@@ -1,3 +1,11 @@
-export const main = (): string => "Kirishima ship ready to serve !";
-
-export default main;
+export * from './Structures/Structure.js';
+export * from './Structures/KirishimaPlayer.js';
+export * from './Structures/Kirishima.js';
+export * from './Structures/KirishimaNode.js';
+export * from './Structures/Track/KirishimaPartialTrack.js';
+export * from './Structures/Track/KirishimaTrack.js';
+export * from './Structures/KirishimaFilter.js';
+export * from './Structures/KirishimaPlugin.js';
+export * from './Structures/Base/BasePlayer.js';
+export * from './typings/index.js';
+export * from './Util.js';
