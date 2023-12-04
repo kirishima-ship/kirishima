@@ -15,6 +15,7 @@
   "devDependencies": {
     "@hazmi35/eslint-config": "^11.0.0",
     "@types/node": "^18.18.9",
+    "@types/ws": "^8.5.10",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.54.0",
@@ -37,6 +38,9 @@
     "rules": {}
   },
   "dependencies": {
+    "@discordjs/collection": "^2.0.0",
+    "@kirishima/rest": "workspace:^",
+    "@kirishima/ws": "workspace:^",
     "@sapphire/async-queue": "^1.5.0",
     "@sapphire/utilities": "^3.13.0",
     "discord-api-types": "^0.37.65",

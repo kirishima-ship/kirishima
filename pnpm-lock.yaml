@@ -17,6 +17,15 @@ importers:
 
   packages/core:
     dependencies:
+      '@discordjs/collection':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@kirishima/rest':
+        specifier: workspace:^
+        version: link:../rest
+      '@kirishima/ws':
+        specifier: workspace:^
+        version: link:../ws
       '@sapphire/async-queue':
         specifier: ^1.5.0
         version: 1.5.0
@@ -42,6 +51,9 @@ importers:
       '@types/node':
         specifier: ^18.18.9
         version: 18.19.0
+      '@types/ws':
+        specifier: ^8.5.10
+        version: 8.5.10
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.13.1
         version: 6.13.1(@typescript-eslint/parser@6.13.1)(eslint@8.54.0)(typescript@5.3.2)
@@ -194,6 +206,11 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /@discordjs/collection@2.0.0:
+    resolution: {integrity: sha512-YTWIXLrf5FsrLMycpMM9Q6vnZoR/lN2AWX23/Cuo8uOOtS8eHB2dyQaaGnaF8aZPYnttf2bkLMcXn/j6JUOi3w==}
+    engines: {node: '>=18'}
+    dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.54.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
