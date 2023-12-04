@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
@@ -47,7 +47,7 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
@@ -73,8 +73,8 @@ importers:
         specifier: workspace:^
         version: link:../fetch
       '@sapphire/async-queue':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.5.1
+        version: 1.5.1
       lavalink-api-types:
         specifier: ^1.1.5
         version: 1.1.5
@@ -84,7 +84,7 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
@@ -108,7 +108,7 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
@@ -131,8 +131,8 @@ importers:
   packages/ws:
     dependencies:
       '@sapphire/async-queue':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.5.1
+        version: 1.5.1
       ws:
         specifier: ^8.14.2
         version: 8.14.2(bufferutil@4.0.8)(utf-8-validate@6.0.3)
@@ -146,7 +146,7 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
@@ -208,11 +208,6 @@ packages:
       - supports-color
     dev: true
 
-  /@eslint/js@8.54.0:
-    resolution: {integrity: sha512-ut5V+D+fOoWPgGGNj83GGjnntO39xDy6DWxO0wb7Jp3DcMX0TfIqdzHF85VTQkerdyGmuuMD9AKAo5KiNlf/AQ==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
-
   /@eslint/js@8.55.0:
     resolution: {integrity: sha512-qQfo2mxH5yVom1kacMtZZJFVdW+E70mqHMJvVg6WTLo+VBuQJ4TojZlfWBjK0ve5BdEeNAVxOsl/nvNMpJOaJA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -223,7 +218,7 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@hazmi35/eslint-config@11.0.0(@eslint/js@8.54.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2):
+  /@hazmi35/eslint-config@11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2):
     resolution: {integrity: sha512-haZj5Y227wWPupoPZmo28LupYeCfGhT4bmcw0a4xV3T1BpxjlgkAgMBCj5r//GNt/SeGV0O7nWvJfWCM4Ffuxw==}
     peerDependencies:
       '@eslint/js': '>=8.42.0'
@@ -239,7 +234,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@eslint/js': 8.54.0
+      '@eslint/js': 8.55.0
       '@typescript-eslint/eslint-plugin': 6.13.2(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
       '@typescript-eslint/parser': 6.13.2(eslint@8.55.0)(typescript@5.3.2)
       eslint: 8.55.0
@@ -306,8 +301,8 @@ packages:
     dev: true
     optional: true
 
-  /@sapphire/async-queue@1.5.0:
-    resolution: {integrity: sha512-JkLdIsP8fPAdh9ZZjrbHWR/+mZj0wvKS5ICibcLrRI1j84UmLMshx5n9QmL8b95d4onJ2xxiyugTgSAX7AalmA==}
+  /@sapphire/async-queue@1.5.1:
+    resolution: {integrity: sha512-1RdpsmDQR/aWfp8oJzPtn4dNQrbpqSL5PIA0uAB/XwerPXUf994Ug1au1e7uGcD7ei8/F63UDjr5GWps1g/HxQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 

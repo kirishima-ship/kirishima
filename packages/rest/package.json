@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@kirishima/fetch": "workspace:^",
-    "@sapphire/async-queue": "^1.5.0",
+    "@sapphire/async-queue": "^1.5.1",
     "lavalink-api-types": "^1.1.5",
     "undici": "^5.28.2"
   }

@@ -49,7 +49,7 @@
     }
   },
   "dependencies": {
-    "@sapphire/async-queue": "^1.5.0",
+    "@sapphire/async-queue": "^1.5.1",
     "ws": "^8.14.2"
   },
   "optionalDependencies": {
