@@ -16,6 +16,37 @@ importers:
         version: 1.10.16
 
   packages/core:
+    dependencies:
+      '@discordjs/collection':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@kirishima/fetch':
+        specifier: workspace:^
+        version: link:../fetch
+      '@kirishima/rest':
+        specifier: workspace:^
+        version: link:../rest
+      '@kirishima/ws':
+        specifier: workspace:^
+        version: link:../ws
+      '@sapphire/async-queue':
+        specifier: ^1.5.1
+        version: 1.5.1
+      '@sapphire/utilities':
+        specifier: ^3.14.0
+        version: 3.14.0
+      discord-api-types:
+        specifier: ^0.37.65
+        version: 0.37.65
+      lavalink-api-types:
+        specifier: ^1.1.5
+        version: 1.1.5
+      undici:
+        specifier: ^5.28.2
+        version: 5.28.2
+      ws:
+        specifier: ^8.14.2
+        version: 8.14.2(bufferutil@4.0.8)(utf-8-validate@6.0.3)
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
@@ -23,6 +54,9 @@ importers:
       '@types/node':
         specifier: ^18.19.2
         version: 18.19.2
+      '@types/ws':
+        specifier: ^8.5.10
+        version: 8.5.10
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.13.2
         version: 6.13.2(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
@@ -176,6 +210,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /@discordjs/collection@2.0.0:
+    resolution: {integrity: sha512-YTWIXLrf5FsrLMycpMM9Q6vnZoR/lN2AWX23/Cuo8uOOtS8eHB2dyQaaGnaF8aZPYnttf2bkLMcXn/j6JUOi3w==}
+    engines: {node: '>=18'}
+    dev: false
+
   /@eslint-community/eslint-utils@4.4.0(eslint@8.55.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -304,6 +343,11 @@ packages:
   /@sapphire/async-queue@1.5.1:
     resolution: {integrity: sha512-1RdpsmDQR/aWfp8oJzPtn4dNQrbpqSL5PIA0uAB/XwerPXUf994Ug1au1e7uGcD7ei8/F63UDjr5GWps1g/HxQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/utilities@3.14.0:
+    resolution: {integrity: sha512-eYlpYlaKLvxTNjD3ymxpsf4MaSHW3x6vf+DMsLdMsV235J7i66VboHb8uxNcogR/lJ7khmMhMTCtabqUhNX4bA==}
+    engines: {node: '>=v14.0.0'}
     dev: false
 
   /@types/json-schema@7.0.15:
@@ -606,6 +650,10 @@ packages:
     dependencies:
       path-type: 4.0.0
     dev: true
+
+  /discord-api-types@0.37.65:
+    resolution: {integrity: sha512-CQHW3Nu04LEHIj1Xps/sfGhTdrowilxnek2tirpLhwvrmgmLr1C6A+4JFLs+0kJMH2IX2QgDyA9GfNehqN+xPQ==}
+    dev: false
 
   /doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
