@@ -2,11 +2,11 @@ import { Awaitable } from "@sapphire/utilities";
 import { GatewayOpcodes } from "discord-api-types/gateway/v9";
 import { KirishimaNode } from "../Structures/Node.js";
 import { KirishimaPlayer } from "../Structures/Player.js";
-import { KirishimaTrack } from "../Structures/Track.js";
 import { KirishimaPartialTrack } from "../Structures/PartialTrack.js";
 import { KirishimaFilter } from "../Structures/Filter.js";
 import { KirishimaPlugin } from "../Structures/Plugin.js";
 import { Exception, LoadTypeEnum } from "lavalink-api-types";
+import { Track } from "lavalink-api-types/v4"
 
 export interface KirishimaOptions {
     clientId?: string;
@@ -60,32 +60,5 @@ export interface KirishimaNodeOptions {
 export interface Extendable {
     KirishimaNode: typeof KirishimaNode;
     KirishimaPlayer: typeof KirishimaPlayer;
-    KirishimaTrack: typeof KirishimaTrack;
-    KirishimaPartialTrack: typeof KirishimaPartialTrack;
     KirishimaFilter: typeof KirishimaFilter;
-}
-
-export interface LoadTrackResponse {
-    loadType: LoadTypeEnum;
-    playlistInfo?: {
-        name: string;
-        selectedTrack: number;
-    };
-    tracks: (KirishimaTrack | KirishimaPartialTrack)[];
-    exception?: Omit<Exception, "cause">;
-}
-
-export interface PartialLavalinkTrack {
-    track?: string;
-    info?: {
-        identifier?: string;
-        isSeekable?: boolean;
-        author?: string;
-        length?: number;
-        isStream?: boolean;
-        position?: number;
-        title?: string;
-        uri?: string;
-        sourceName?: string;
-    };
 }

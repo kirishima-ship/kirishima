@@ -39,8 +39,8 @@ importers:
         specifier: ^0.37.65
         version: 0.37.65
       lavalink-api-types:
-        specifier: ^1.1.5
-        version: 1.1.5
+        specifier: ^2.0.0
+        version: 2.0.0
       undici:
         specifier: ^5.28.2
         version: 5.28.2
@@ -139,6 +139,61 @@ importers:
         version: 5.3.2
 
   packages/template:
+    devDependencies:
+      '@hazmi35/eslint-config':
+        specifier: ^11.0.0
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+      '@types/node':
+        specifier: ^18.19.2
+        version: 18.19.2
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.13.2
+        version: 6.13.2(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+      '@typescript-eslint/parser':
+        specifier: ^6.13.2
+        version: 6.13.2(eslint@8.55.0)(typescript@5.3.2)
+      eslint:
+        specifier: ^8.55.0
+        version: 8.55.0
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
+      typescript:
+        specifier: ^5.3.2
+        version: 5.3.2
+
+  packages/types:
+    devDependencies:
+      '@hazmi35/eslint-config':
+        specifier: ^11.0.0
+        version: 11.0.0(@eslint/js@8.55.0)(@typescript-eslint/eslint-plugin@6.13.2)(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+      '@types/node':
+        specifier: ^18.19.2
+        version: 18.19.2
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.13.2
+        version: 6.13.2(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.3.2)
+      '@typescript-eslint/parser':
+        specifier: ^6.13.2
+        version: 6.13.2(eslint@8.55.0)(typescript@5.3.2)
+      eslint:
+        specifier: ^8.55.0
+        version: 8.55.0
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
+      typescript:
+        specifier: ^5.3.2
+        version: 5.3.2
+
+  packages/utilities:
+    dependencies:
+      '@kirishima/types':
+        specifier: workspace:^
+        version: link:../types
+      discord-api-types:
+        specifier: ^0.37.65
+        version: 0.37.65
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
@@ -1012,6 +1067,11 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     dependencies:
       tslib: 2.6.2
+    dev: false
+
+  /lavalink-api-types@2.0.0:
+    resolution: {integrity: sha512-+MtQ9neGPEfxHW3O3wmtPffJBOwwUN3XBDdvbWN483DQ4Ps7ipehIz+K+f5208CH4bAcFH26LBH9eBlDNT2mEA==}
+    engines: {node: '>=20.0.0', npm: '>=7.0.0'}
     dev: false
 
   /levn@0.4.1:
