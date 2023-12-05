@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { EventEmitter } from "node:events";
-import { KirishimaNodeOptions, KirishimaOptions, KirishimaPlayerOptions, LoadTrackResponse } from "../typings/index.js";
+import { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
 import crypto from "node:crypto";
 
 import { KirishimaNode } from "./Node.js";
 import { GatewayVoiceServerUpdateDispatch, GatewayVoiceStateUpdateDispatch } from "discord-api-types/gateway/v9";
 import { Collection } from "@discordjs/collection";
-import { KirishimaPlayer } from "./Player.js";
-import { Structure } from "./Structure.js";
+import { PlayerOptions } from "@kirishima/types";
+import { BasePlayer } from "./BasePlayer.js";
 
 export class Kirishima extends EventEmitter {
     public nodes = new Collection<string, KirishimaNode>();
-    public players?: Collection<string, KirishimaPlayer>;
+    public players?: Collection<string, BasePlayer>;
     public constructor(public options: KirishimaOptions) {
         super();
 
@@ -19,7 +19,7 @@ export class Kirishima extends EventEmitter {
 
         if (
             typeof options.spawnPlayer !== "function" ||
-            (typeof options.spawnPlayer === undefined && (typeof options.fetchPlayer !== "function" || typeof options.fetchPlayer === undefined))
+            (typeof options.spawnPlayer === "undefined" && (typeof options.fetchPlayer !== "function" || typeof options.fetchPlayer === "undefined"))
         ) {
             this.players = new Collection();
             options.spawnPlayer = this.defaultSpawnPlayerHandler.bind(this);
@@ -27,7 +27,7 @@ export class Kirishima extends EventEmitter {
 
         if (
             typeof options.fetchPlayer !== "function" ||
-            (typeof options.fetchPlayer === undefined && (typeof options.spawnPlayer !== "function" || typeof options.spawnPlayer === undefined))
+            (typeof options.fetchPlayer === "undefined" && (typeof options.spawnPlayer !== "function" || typeof options.spawnPlayer === "undefined"))
         ) {
             options.fetchPlayer = this.defaultFetchPlayerHandler.bind(this);
         }
@@ -35,14 +35,9 @@ export class Kirishima extends EventEmitter {
         if (!options.nodes.length) throw new Error("Nodes option must not a empty array");
     }
 
-    public async initialize(clientId?: string) {
+    public async initialize(clientId?: string): Promise<Kirishima> {
         if (!clientId && !this.options.clientId) throw new Error("Invalid clientId provided");
         if (clientId && !this.options.clientId) this.options.clientId = clientId;
-        if (this.options.plugins) {
-            for (const plugin of [...this.options.plugins.values()]) {
-                await plugin.load(this);
-            }
-        }
         return this.setNodes(this.options.nodes);
     }
 
@@ -50,29 +45,29 @@ export class Kirishima extends EventEmitter {
         const isArray = Array.isArray(nodeOrNodes);
         if (isArray) {
             for (const node of nodeOrNodes) {
-                const kirishimaNode = new (Structure.get("KirishimaNode"))(node, this);
+                const kirishimaNode = new KirishimaNode(node, this);
                 await kirishimaNode.connect();
                 this.nodes.set(node.identifier ??= crypto.randomBytes(4).toString("hex"), kirishimaNode);
             }
             return this;
         }
-        const kirishimaNode = new (Structure.get("KirishimaNode"))(nodeOrNodes, this);
+        const kirishimaNode = new KirishimaNode(nodeOrNodes, this);
         await kirishimaNode.connect();
         this.nodes.set(nodeOrNodes.identifier ??= crypto.randomBytes(4).toString("hex"), kirishimaNode);
         return this;
     }
 
-    public setClientName(clientName: string) {
+    public setClientName(clientName: string): this {
         this.options.clientName = clientName;
         return this;
     }
 
-    public setClientId(clientId: string) {
+    public setClientId(clientId: string): this {
         this.options.clientId = clientId;
         return this;
     }
 
-    public resolveNode(identifierOrGroup?: string) {
+    public resolveNode(identifierOrGroup?: string): KirishimaNode | undefined {
         const resolveGroupedNode = this.nodes.filter(x => x.connected).find(x => x.options.group?.includes(identifierOrGroup!)!);
         if (resolveGroupedNode) return resolveGroupedNode;
         const resolveIdenfitierNode = this.nodes.filter(x => x.connected).find(x => x.options.identifier === identifierOrGroup);
@@ -80,7 +75,7 @@ export class Kirishima extends EventEmitter {
         return this.resolveBestNode().first();
     }
 
-    public resolveBestNode() {
+    public resolveBestNode(): Collection<string, KirishimaNode> {
         return this.nodes
             .filter(x => x.connected)
             .sort((x, y) => {
@@ -90,30 +85,23 @@ export class Kirishima extends EventEmitter {
             });
     }
 
-    public async resolveTracks(options: string | { source?: string | undefined; query: string }, node?: KirishimaNode): Promise<LoadTrackResponse> {
-        node ??= this.resolveNode();
-        const resolveTracks = await node!.rest.loadTracks(options);
-        if (resolveTracks.tracks.length) resolveTracks.tracks = resolveTracks.tracks.map(x => new (Structure.get("KirishimaTrack"))(x));
-        return resolveTracks as unknown as LoadTrackResponse;
-    }
-
-    public spawnPlayer(options: KirishimaPlayerOptions, node?: KirishimaNode) {
+    public spawnPlayer(options: PlayerOptions, node?: KirishimaNode): unknown {
         return this.options.spawnPlayer!(options.guildId, options, node ?? this.resolveNode()!);
     }
 
-    public async handleVoiceServerUpdate(packet: GatewayVoiceServerUpdateDispatch) {
+    public async handleVoiceServerUpdate(packet: GatewayVoiceServerUpdateDispatch): Promise<void> {
         for (const node of [...this.nodes.values()]) {
             await node.handleVoiceServerUpdate(packet);
         }
     }
 
-    public async handleVoiceStateUpdate(packet: GatewayVoiceStateUpdateDispatch) {
+    public async handleVoiceStateUpdate(packet: GatewayVoiceStateUpdateDispatch): Promise<void> {
         for (const node of [...this.nodes.values()]) {
             await node.handleVoiceStateUpdate(packet);
         }
     }
 
-    public async handleRawPacket(t: "VOICE_SERVER_UPDATE" | "VOICE_STATE_UPDATE", packet: unknown) {
+    public async handleRawPacket(t: "VOICE_SERVER_UPDATE" | "VOICE_STATE_UPDATE", packet: unknown): Promise<void> {
         if (t === "VOICE_STATE_UPDATE") {
             await this.handleVoiceStateUpdate(packet as GatewayVoiceStateUpdateDispatch);
         }
@@ -122,15 +110,15 @@ export class Kirishima extends EventEmitter {
         }
     }
 
-    private defaultSpawnPlayerHandler(guildId: string, options: KirishimaPlayerOptions, node: KirishimaNode) {
+    private defaultSpawnPlayerHandler(guildId: string, options: PlayerOptions, node: KirishimaNode): BasePlayer {
         const player = this.players!.has(guildId);
         if (player) return this.players!.get(guildId)!;
-        const kirishimaPlayer = new (Structure.get("KirishimaPlayer"))(options, this, node);
+        const kirishimaPlayer = new BasePlayer(options, this, node);
         this.players!.set(guildId, kirishimaPlayer);
         return kirishimaPlayer;
     }
 
-    private defaultFetchPlayerHandler(guildId: string) {
+    private defaultFetchPlayerHandler(guildId: string): BasePlayer | undefined {
         return this.players!.get(guildId);
     }
 }

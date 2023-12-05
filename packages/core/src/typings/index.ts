@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import { Awaitable } from "@sapphire/utilities";
 import { KirishimaNode } from "../Structures/Node.js";
 import { PlayerOptions, ShardPayload } from "@kirishima/types";
@@ -21,7 +22,7 @@ export interface KirishimaOptions {
 
 export type SpawnPlayerOptionHook = (guildId: string, options: PlayerOptions, node: KirishimaNode) => Awaitable<unknown>;
 
-export type PlayerOptionHook = (guildId: string) => Awaitable<BasePlayer>;
+export type PlayerOptionHook = (guildId: string) => Awaitable<BasePlayer | undefined>;
 
 export interface KirishimaNodeOptions {
     identifier?: string;
