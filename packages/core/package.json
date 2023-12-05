@@ -41,11 +41,13 @@
     "@discordjs/collection": "^2.0.0",
     "@kirishima/fetch": "workspace:^",
     "@kirishima/rest": "workspace:^",
+    "@kirishima/types": "workspace:^",
+    "@kirishima/utilities": "workspace:^",
     "@kirishima/ws": "workspace:^",
     "@sapphire/async-queue": "^1.5.1",
     "@sapphire/utilities": "^3.14.0",
     "discord-api-types": "^0.37.65",
-    "lavalink-api-types": "^2.0.0",
+    "lavalink-api-types": "^2.0.1",
     "undici": "^5.28.2",
     "ws": "^8.14.2"
   }

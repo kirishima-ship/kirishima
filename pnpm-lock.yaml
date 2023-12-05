@@ -26,6 +26,12 @@ importers:
       '@kirishima/rest':
         specifier: workspace:^
         version: link:../rest
+      '@kirishima/types':
+        specifier: workspace:^
+        version: link:../types
+      '@kirishima/utilities':
+        specifier: workspace:^
+        version: link:../utilities
       '@kirishima/ws':
         specifier: workspace:^
         version: link:../ws
@@ -39,8 +45,8 @@ importers:
         specifier: ^0.37.65
         version: 0.37.65
       lavalink-api-types:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.1
+        version: 2.0.1
       undici:
         specifier: ^5.28.2
         version: 5.28.2
@@ -1069,8 +1075,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /lavalink-api-types@2.0.0:
-    resolution: {integrity: sha512-+MtQ9neGPEfxHW3O3wmtPffJBOwwUN3XBDdvbWN483DQ4Ps7ipehIz+K+f5208CH4bAcFH26LBH9eBlDNT2mEA==}
+  /lavalink-api-types@2.0.1:
+    resolution: {integrity: sha512-asTRKnTKhSLOg4xknqj6kvJFKTfLuINNj8W/8V+W0d48Yd2dTwN8/4TBEYl+g/hQfky1h9vbK8Okx2CCra27Aw==}
     engines: {node: '>=20.0.0', npm: '>=7.0.0'}
     dev: false
 

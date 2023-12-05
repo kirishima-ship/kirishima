@@ -1,32 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import { WebSocket } from "ws";
 import { Gateway } from "@kirishima/ws";
 import { REST } from "@kirishima/rest";
 import { KirishimaNodeOptions } from "../typings/index.js";
 import { Kirishima } from "./Kirishima.js";
 import { GatewayVoiceServerUpdateDispatch, GatewayVoiceStateUpdateDispatch } from "discord-api-types/gateway/v9";
-import { LavalinkStatsPayload, WebsocketOpEnum } from "lavalink-api-types";
-import { BasePlayer } from "./BasePlayer.js";
 import { Collection } from "@discordjs/collection";
 import { Snowflake } from "discord-api-types/globals";
+import { StatsPayload, WebSocketOp } from "lavalink-api-types/v4";
+import { BasePlayer } from "./BasePlayer.js";
 
 export class KirishimaNode {
     public ws!: Gateway;
     public rest!: REST;
-    public stats: LavalinkStatsPayload | undefined;
+    public stats: StatsPayload | undefined;
+    public sessionId: string | null = null;
     public reconnect: { attempts: number; timeout?: NodeJS.Timeout } = { attempts: 0 };
     public voiceServers = new Collection<Snowflake, GatewayVoiceServerUpdateDispatch["d"]>();
     public voiceStates = new Collection<Snowflake, GatewayVoiceStateUpdateDispatch["d"]>();
-    public constructor(public options: KirishimaNodeOptions, public kirishima: Kirishima) { }
+    public constructor(public options: KirishimaNodeOptions, public kirishima: Kirishima) {
+        this.rest = new REST(`${this.options.url.endsWith("443") || this.options.secure ? "https" : "http"}://${this.options.url}`, {
+            Authorization: this.options.password ??= "youshallnotpass"
+        });
+    }
 
-    public get connected() {
-        if (!this.ws) return false;
+    public get connected(): boolean {
         return this.ws.connection?.readyState === WebSocket.OPEN;
     }
 
     public async connect(): Promise<KirishimaNode> {
-        this.rest ??= new REST(`${this.options.url.endsWith("443") || this.options.secure ? "https" : "http"}://${this.options.url}`, {
-            Authorization: this.options.password ??= "youshallnotpass"
-        });
         if (this.connected) return this;
         const headers = {
             Authorization: this.options.password ??= "youshallnotpass",
@@ -34,8 +36,6 @@ export class KirishimaNode {
             "Client-Name": this.kirishima.options.clientName ??= "Kirishima NodeJS Lavalink Client (https://github.com/kirishima-ship/core)"
         };
 
-        // @ts-expect-error If you know how to fix this, please open a PR.
-        if (this.kirishima.options.node?.resumeKey) headers["Resume-Key"] = this.kirishima.options.node.resumeKey;
         this.ws = new Gateway(`${this.options.url.endsWith("443") || this.options.secure ? "wss" : "ws"}://${this.options.url}`, headers);
         await this.ws.connect();
         this.ws.on("open", () => this.open.bind(this));
@@ -45,24 +45,17 @@ export class KirishimaNode {
         return this;
     }
 
-    public disconnect() {
+    public disconnect(): void {
         this.ws.connection?.close(1000, "Disconnected by user");
         if (this.reconnect.timeout) clearTimeout(this.reconnect.timeout);
     }
 
-    public open(gateway: Gateway) {
+    public open(gateway: Gateway): void {
         this.reconnect.attempts = 0;
-        if (this.kirishima.options.node?.resumeKey && this.kirishima.options.node.resumeTimeout) {
-            void this.ws.send({
-                op: WebsocketOpEnum.CONFIGURE_RESUMING,
-                key: this.kirishima.options.node.resumeKey,
-                timeout: this.kirishima.options.node.resumeTimeout
-            });
-        }
         this.kirishima.emit("nodeConnect", this, gateway);
     }
 
-    public close(gateway: Gateway, close: number) {
+    public close(gateway: Gateway, close: number): void {
         this.kirishima.emit("nodeDisconnect", this, gateway, close);
         if (this.kirishima.options.node && this.kirishima.options.node.reconnectOnDisconnect) {
             if (this.reconnect.attempts < (this.kirishima.options.node.reconnectAttempts ?? 3)) {
@@ -77,41 +70,27 @@ export class KirishimaNode {
         }
     }
 
-    public error(gateway: Gateway, error: Error) {
+    public error(gateway: Gateway, error: Error): void {
         this.kirishima.emit("nodeError", this, gateway, error);
     }
 
-    public message(gateway: Gateway, raw: string) {
+    public message(gateway: Gateway, raw: Record<string, unknown>): void {
         try {
-            const message = JSON.parse(raw);
-            this.kirishima.emit("nodeRaw", this, gateway, message);
-            if (message.op === WebsocketOpEnum.STATS) this.stats = message;
+            if (raw.op === WebSocketOp.Ready) {
+                this.sessionId = raw.sessionId as string;
+            }
         } catch (e) {
             this.kirishima.emit("nodeError", this, gateway, e);
         }
     }
 
-    public toJSON() {
-        return {
-            identifier: this.options.identifier,
-            url: this.options.url,
-            secure: this.options.secure,
-            password: this.options.password,
-            group: this.options.group
-        };
+    public async handleVoiceServerUpdate(packet: GatewayVoiceServerUpdateDispatch): Promise<void> {
+        const player = await this.kirishima.options.fetchPlayer!(packet.d.guild_id) as unknown as BasePlayer | undefined;
+        if (player) await player.setServerUpdate(packet);
     }
 
-    public async handleVoiceServerUpdate(packet: GatewayVoiceServerUpdateDispatch) {
-        const player = (await this.kirishima.options.fetchPlayer!(packet.d.guild_id)) as BasePlayer;
-        if (player) {
-            await player.setServerUpdate(packet);
-        }
-    }
-
-    public async handleVoiceStateUpdate(packet: GatewayVoiceStateUpdateDispatch) {
-        const player = (await this.kirishima.options.fetchPlayer!(packet.d.guild_id!)) as BasePlayer;
-        if (player) {
-            await player.setStateUpdate(packet);
-        }
+    public async handleVoiceStateUpdate(packet: GatewayVoiceStateUpdateDispatch): Promise<void> {
+        const player = await this.kirishima.options.fetchPlayer!(packet.d.guild_id!) as unknown as BasePlayer | undefined;
+        if (player) await player.setStateUpdate(packet);
     }
 }

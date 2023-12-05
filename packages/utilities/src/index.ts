@@ -1,7 +1,7 @@
 import { GatewayOpcodes } from "discord-api-types/v10";
-import { PlayerOptions } from "@kirishima/types";
+import { PlayerOptions, ShardPayload } from "@kirishima/types";
 
-export function createVoiceChannelJoinPayload(options: PlayerOptions, leave?: boolean) {
+export function shardPayload(options: PlayerOptions, leave?: boolean): ShardPayload {
     return {
         op: GatewayOpcodes.VoiceStateUpdate,
         d: {

@@ -41,6 +41,8 @@
       "plugin:@typescript-eslint/recommended",
       "@hazmi35/eslint-config/typescript"
     ],
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/naming-convention": "off"
+    }
   }
 }
