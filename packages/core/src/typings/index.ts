@@ -1,8 +1,5 @@
 import { Awaitable } from "@sapphire/utilities";
 import { KirishimaNode } from "../Structures/Node.js";
-import { KirishimaPlayer } from "../Structures/Player.js";
-import { KirishimaFilter } from "../Structures/Filter.js";
-import { KirishimaPlugin } from "../Structures/Plugin.js";
 import { PlayerOptions, ShardPayload } from "@kirishima/types";
 import { BasePlayer } from "src/index.js";
 
@@ -20,7 +17,6 @@ export interface KirishimaOptions {
     send: (options: PlayerOptions, payload: ShardPayload) => Awaitable<unknown>;
     spawnPlayer?: SpawnPlayerOptionHook;
     fetchPlayer?: PlayerOptionHook;
-    plugins?: KirishimaPlugin[];
 }
 
 export type SpawnPlayerOptionHook = (guildId: string, options: PlayerOptions, node: KirishimaNode) => Awaitable<unknown>;
@@ -35,8 +31,3 @@ export interface KirishimaNodeOptions {
     group?: string[];
 }
 
-export interface Extendable {
-    KirishimaNode: typeof KirishimaNode;
-    KirishimaPlayer: typeof KirishimaPlayer;
-    KirishimaFilter: typeof KirishimaFilter;
-}
