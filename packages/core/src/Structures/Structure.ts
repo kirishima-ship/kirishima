@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
-import type { Extendable } from '../typings/index.js';
-import { KirishimaFilter } from './Filter.js';
+import { Extendable } from "../typings/index.js";
+import { KirishimaFilter } from "./Filter.js";
 
-import { KirishimaNode } from './Node.js';
-import { KirishimaPlayer } from './Player.js';
-import { KirishimaPartialTrack } from './PartialTrack.js';
-import { KirishimaTrack } from './Track.js';
+import { KirishimaNode } from "./Node.js";
+import { KirishimaPlayer } from "./Player.js";
+import { KirishimaPartialTrack } from "./PartialTrack.js";
+import { KirishimaTrack } from "./Track.js";
 
 const structures = {
     KirishimaNode,

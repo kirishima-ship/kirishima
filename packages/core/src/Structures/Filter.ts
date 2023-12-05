@@ -8,7 +8,7 @@ import {
     TimeScaleEqualizer,
     TremoloEqualizer,
     VibratoEqualizer
-} from 'lavalink-api-types';
+} from "lavalink-api-types";
 
 export class KirishimaFilter {
     public volume: number | null;

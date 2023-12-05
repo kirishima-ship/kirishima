@@ -1,6 +1,6 @@
-import { Kirishima } from './Kirishima.js';
-import type { KirishimaPlayerOptions } from '../typings/index.js';
-import { KirishimaNode, isTrack } from '../index.js';
+import { Kirishima } from "./Kirishima.js";
+import { KirishimaPlayerOptions } from "../typings/index.js";
+import { KirishimaNode, isTrack } from "../index.js";
 
 import {
     ChannelMixEqualizer,
@@ -13,14 +13,14 @@ import {
     TremoloEqualizer,
     VibratoEqualizer,
     WebsocketOpEnum
-} from 'lavalink-api-types';
-import { KirishimaTrack } from './Track.js';
-import { KirishimaFilter, KirishimaFilterOptions } from './Filter.js';
-import { Structure } from './Structure.js';
-import { BasePlayer } from './BasePlayer.js';
+} from "lavalink-api-types";
+import { KirishimaTrack } from "./Track.js";
+import { KirishimaFilter, KirishimaFilterOptions } from "./Filter.js";
+import { Structure } from "./Structure.js";
+import { BasePlayer } from "./BasePlayer.js";
 
 export class KirishimaPlayer extends BasePlayer {
-    public filters = new (Structure.get('KirishimaFilter'))();
+    public filters = new (Structure.get("KirishimaFilter"))();
     public paused = false;
     public playing = false;
 
@@ -56,7 +56,7 @@ export class KirishimaPlayer extends BasePlayer {
     }
 
     public async setVolume(volume: number) {
-        if (volume < 0 || volume > 500) throw new Error('Volume must be between 0 and 500');
+        if (volume < 0 || volume > 500) throw new Error("Volume must be between 0 and 500");
         this.filters.volume = volume / 100;
         await this.node.ws.send({
             op: WebsocketOpEnum.FILTERS,
@@ -183,6 +183,6 @@ export class KirishimaPlayer extends BasePlayer {
             });
             return this;
         }
-        throw new Error('There are no playing track currently.');
+        throw new Error("There are no playing track currently.");
     }
 }

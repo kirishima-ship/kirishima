@@ -1,5 +1,5 @@
-import { GatewayOpcodes } from 'discord-api-types/gateway/v9';
-import { KirishimaPlayerOptions } from '../typings/index.js';
+import { GatewayOpcodes } from "discord-api-types/gateway/v9";
+import { KirishimaPlayerOptions } from "../typings/index.js";
 
 export function createVoiceChannelJoinPayload(options: KirishimaPlayerOptions, leave?: boolean) {
     return {
@@ -7,8 +7,8 @@ export function createVoiceChannelJoinPayload(options: KirishimaPlayerOptions, l
         d: {
             guild_id: options.guildId,
             channel_id: leave ? null : options.channelId,
-            self_deaf: (options.selfDeaf ??= false),
-            self_mute: (options.selfMute ??= false)
+            self_deaf: options.selfDeaf ??= false,
+            self_mute: options.selfMute ??= false
         }
     };
 }

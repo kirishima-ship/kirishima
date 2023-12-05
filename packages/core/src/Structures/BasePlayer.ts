@@ -1,7 +1,7 @@
-import { GatewayVoiceServerUpdateDispatch, GatewayVoiceStateUpdateDispatch } from 'discord-api-types/gateway/v9';
-import { Snowflake } from 'discord-api-types/globals';
-import { WebsocketOpEnum } from 'lavalink-api-types';
-import { KirishimaPlayerOptions, KirishimaNode, createVoiceChannelJoinPayload, Kirishima } from '../index.js';
+import { GatewayVoiceServerUpdateDispatch, GatewayVoiceStateUpdateDispatch } from "discord-api-types/gateway/v9";
+import { Snowflake } from "discord-api-types/globals";
+import { WebsocketOpEnum } from "lavalink-api-types";
+import { KirishimaPlayerOptions, KirishimaNode, createVoiceChannelJoinPayload, Kirishima } from "../index.js";
 
 export class BasePlayer {
     public get voiceState() {
