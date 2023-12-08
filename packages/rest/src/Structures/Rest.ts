@@ -1,8 +1,8 @@
 import { fetch, FetchResultTypes } from "@kirishima/fetch";
 import { AsyncQueue } from "@sapphire/async-queue";
-import { RoutePlannerStatusResponse, LoadTrackResponse, LavalinkTrack, LavalinkSource, LavalinkSourceEnum, LavalinkSearchIdentifierEnum, Routes } from "lavalink-api-types";
 import { RequestInit } from "undici";
 import { join } from "path";
+import { LavalinkSearchIdentifier, LavalinkSource, LoadTrackResponse, RoutePlannerStatusResponse, Routes, Track } from "lavalink-api-types/v4";
 
 export class REST {
     public headers: Record<string, string> = {};
@@ -31,13 +31,13 @@ export class REST {
         }
     }
 
-    public resolveIdentifier(source: LavalinkSource): string {
-        return source === LavalinkSourceEnum.Youtube
-            ? LavalinkSearchIdentifierEnum.YT_SEARCH
-            : source === LavalinkSourceEnum.Soundcloud
-                ? LavalinkSearchIdentifierEnum.SC_SEARCH
-                : source === LavalinkSearchIdentifierEnum.YTM_SEARCH
-                    ? LavalinkSearchIdentifierEnum.YTM_SEARCH
+    public resolveIdentifier(source: string): string {
+        return source === LavalinkSource.Youtube
+            ? LavalinkSearchIdentifier.YTSearch
+            : source === LavalinkSource.Soundcloud
+                ? LavalinkSearchIdentifier.SCSearch
+                : source === LavalinkSearchIdentifier.YTMSearch
+                    ? LavalinkSearchIdentifier.YTMSearch
                     : source;
     }
 
@@ -52,11 +52,11 @@ export class REST {
                 Routes.loadTracks(
                     this.isUrl(options)
                         ? encodeURIComponent(options)
-                        : encodeURIComponent(`${this.resolveIdentifier(LavalinkSourceEnum.Youtube)}:${options}`)
+                        : encodeURIComponent(`${this.resolveIdentifier(LavalinkSource.Youtube)}:${options}`)
                 )
             );
         }
-        const source = options.source ?? LavalinkSourceEnum.Youtube;
+        const source = options.source ?? LavalinkSource.Youtube;
         const { query } = options;
         return this.get<LoadTrackResponse>(
             Routes.loadTracks(
@@ -69,14 +69,14 @@ export class REST {
         );
     }
 
-    public decodeTracks(trackOrTracks: LavalinkTrack["track"][] | LavalinkTrack["track"]): Promise<LavalinkTrack[]> {
+    public decodeTracks(trackOrTracks: Track["encoded"][] | Track["encoded"]): Promise<Track[]> {
         if (Array.isArray(trackOrTracks)) {
-            return this.post<LavalinkTrack[]>(Routes.decodeTracks(), {
+            return this.post<Track[]>(Routes.decodeTracks(), {
                 body: JSON.stringify(trackOrTracks),
                 headers: { ...this.headers, "Content-Type": "application/json" }
             });
         }
-        return this.post<LavalinkTrack[]>(Routes.decodeTracks(), {
+        return this.post<Track[]>(Routes.decodeTracks(), {
             body: JSON.stringify([trackOrTracks]),
             headers: { ...this.headers, "Content-Type": "application/json" }
         });

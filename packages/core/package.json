@@ -2,7 +2,14 @@
   "name": "@kirishima/core",
   "version": "1.0.0",
   "description": "A Core library for Kirishima Lavalink Client.",
-  "main": "dist",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext ts",
@@ -47,7 +54,7 @@
     "@sapphire/async-queue": "^1.5.1",
     "@sapphire/utilities": "^3.14.0",
     "discord-api-types": "^0.37.65",
-    "lavalink-api-types": "^2.0.1",
+    "lavalink-api-types": "^2.0.2",
     "undici": "^5.28.2",
     "ws": "^8.14.2"
   }

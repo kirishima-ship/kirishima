@@ -25,7 +25,7 @@ export class KirishimaNode {
     }
 
     public get connected(): boolean {
-        return this.ws.connection?.readyState === WebSocket.OPEN;
+        return this.ws?.connection?.readyState === WebSocket.OPEN;
     }
 
     public async connect(): Promise<KirishimaNode> {
@@ -36,10 +36,10 @@ export class KirishimaNode {
             "Client-Name": this.kirishima.options.clientName ??= "Kirishima NodeJS Lavalink Client (https://github.com/kirishima-ship/core)"
         };
 
-        this.ws = new Gateway(`${this.options.url.endsWith("443") || this.options.secure ? "wss" : "ws"}://${this.options.url}`, headers);
+        this.ws = new Gateway(`${this.options.url.endsWith("443") || this.options.secure ? "wss" : "ws"}://${this.options.url}/v4/websocket`, headers);
         await this.ws.connect();
-        this.ws.on("open", () => this.open.bind(this));
-        this.ws.on("message", () => this.message.bind(this));
+        this.ws.on("open", gateway => this.open(gateway));
+        this.ws.on("message", (gateway, raw) => this.message(gateway, raw as Record<string, unknown>));
         this.ws.on("error", () => this.error.bind(this));
         this.ws.on("close", () => this.close.bind(this));
         return this;
@@ -76,6 +76,7 @@ export class KirishimaNode {
 
     public message(gateway: Gateway, raw: Record<string, unknown>): void {
         try {
+            console.log(raw);
             if (raw.op === WebSocketOp.Ready) {
                 this.sessionId = raw.sessionId as string;
             }
