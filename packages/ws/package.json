@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@sapphire/async-queue": "^1.5.1",
-    "ws": "^8.15.0"
+    "ws": "^8.15.1"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8",
