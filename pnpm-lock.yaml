@@ -76,8 +76,8 @@ importers:
         specifier: ^1.5.1
         version: 1.5.1
       lavalink-api-types:
-        specifier: ^1.1.5
-        version: 1.1.5
+        specifier: ^2.0.2
+        version: 2.0.2
       undici:
         specifier: ^6.2.0
         version: 6.2.0
@@ -959,11 +959,9 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /lavalink-api-types@1.1.5:
-    resolution: {integrity: sha512-hTqAIvePssXuhCizQOaKK7ln0jQNlFkaeb+gDTwcaNprunAFVAL8bTcPDGspzY4BfbkCX0P+cnB/Noblwds2Tg==}
-    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
-    dependencies:
-      tslib: 2.6.2
+  /lavalink-api-types@2.0.2:
+    resolution: {integrity: sha512-weRuYSdiEMNnJeQYqbl/SmX0ZApNn0xR5xF3c/1vJvJ6T07fK5R6nL82IC0nNJjDLq9hUl0b9KJIAKCokM3Lng==}
+    engines: {node: '>=20.0.0', npm: '>=7.0.0'}
     dev: false
 
   /levn@0.4.1:
@@ -1252,10 +1250,6 @@ packages:
     dependencies:
       typescript: 5.3.3
     dev: true
-
-  /tslib@2.6.2:
-    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-    dev: false
 
   /turbo-darwin-64@1.11.2:
     resolution: {integrity: sha512-toFmRG/adriZY3hOps7nYCfqHAS+Ci6xqgX3fbo82kkLpC6OBzcXnleSwuPqjHVAaRNhVoB83L5njcE9Qwi2og==}
