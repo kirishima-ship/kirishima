@@ -4,7 +4,7 @@ import { IncomingMessage } from "node:http";
 import { WebSocket } from "ws";
 
 export interface Gateway {
-    on: ((event: "message", listener: (gateway: Gateway, raw: unknown) => void) => this) & ((event: "open", listener: (gateway: Gateway) => void) => this) & ((event: "close", listener: (gateway: Gateway, code: number) => void) => this) & ((event: "error", listener: (gateway: Gateway, error: Error) => void) => this);
+    on: ((event: "message", listener: (gateway: Gateway, raw: unknown) => void) => this) & ((event: "open", listener: (gateway: Gateway) => void) => this) & ((event: "close", listener: (gateway: Gateway, code: number) => void) => this) & ((event: "error", listener: (gateway: Gateway, error: Error) => void) => this) & ((event: "upgrade", listener: (gateway: Gateway, msg: IncomingMessage) => void) => this);
     once: ((event: "message", listener: (gateway: Gateway, raw: unknown) => void) => this) & ((event: "open", listener: (gateway: Gateway) => void) => this) & ((event: "close", listener: (gateway: Gateway, code: number) => void) => this) & ((event: "error", listener: (gateway: Gateway, error: Error) => void) => this) & ((event: "upgrade", listener: (gateway: Gateway, msg: IncomingMessage) => void) => this);
 }
 
@@ -23,22 +23,22 @@ export class Gateway extends EventEmitter {
     }
 
     public setClientId(userId: string): this {
-        this.headers["User-Id"] ??= userId;
+        this.headers["User-Id"] = userId;
         return this;
     }
 
     public setAuthorization(authorization: string): this {
-        this.headers["Authorization"] ??= authorization;
+        this.headers["Authorization"] = authorization;
         return this;
     }
 
     public setClientName(clientName: string): this {
-        this.headers["Client-Name"] ??= clientName;
+        this.headers["Client-Name"] = clientName;
         return this;
     }
 
-    public setResumeKey(key: string): this {
-        this.headers["Resume-Key"] ??= key;
+    public setSessionId(id: string): this {
+        this.headers["Session-Id"] = id;
         return this;
     }
 

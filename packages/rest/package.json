@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A Rest library for Kirishima Lavalink Client.",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/index.mjs",
+    "import": "./dist/index.js",
     "require": "./dist/index.js"
   },
   "scripts": {
@@ -50,7 +50,7 @@
   "dependencies": {
     "@kirishima/fetch": "workspace:^",
     "@sapphire/async-queue": "^1.5.1",
-    "lavalink-api-types": "^1.1.5",
+    "lavalink-api-types": "^2.0.2",
     "undici": "^6.2.0"
   }
 }

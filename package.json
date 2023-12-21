@@ -5,14 +5,17 @@
   "main": "dist",
   "scripts": {
     "build": "turbo run build",
-    "lint": "turbo run lint",
+    "lint": "turbo run build && turbo run lint",
     "lint:fix": "turbo run lint:fix"
   },
   "type": "module",
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "@kirishima/core": "workspace:^",
     "turbo": "^1.11.2"
   }
 }

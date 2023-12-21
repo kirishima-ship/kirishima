@@ -1,3 +1,5 @@
-export const main = (): string => "Kirishima ship ready to serve !";
+export * from "./Structures/Node.js";
+export * from "./Structures/Kirishima.js";
 
-export default main;
+export * from "./typings/index.js";
+
