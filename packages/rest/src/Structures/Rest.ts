@@ -85,7 +85,7 @@ export class REST {
     public async get<T>(route: string, init?: RequestInit | undefined): Promise<T> {
         await this.queue.wait();
         try {
-            return await fetch(new URL(join(this.url, route)), { ...init, headers: this.headers }, FetchResultTypes.JSON);
+            return await fetch(new URL(join(this.url, route)), { ...init, headers: { ...this.headers, "Content-Type": "application/json" } }, FetchResultTypes.JSON);
         } finally {
             this.queue.shift();
         }
@@ -94,7 +94,7 @@ export class REST {
     public async post<T>(route: string, init?: RequestInit | undefined): Promise<T> {
         await this.queue.wait();
         try {
-            return await fetch(new URL(join(this.url, route)), { ...init, headers: this.headers, method: "POST" }, FetchResultTypes.JSON);
+            return await fetch(new URL(join(this.url, route)), { ...init, headers: { ...this.headers, "Content-Type": "application/json" }, method: "POST" }, FetchResultTypes.JSON);
         } finally {
             this.queue.shift();
         }
@@ -103,7 +103,7 @@ export class REST {
     public async patch<T>(route: string, init?: RequestInit | undefined): Promise<T> {
         await this.queue.wait();
         try {
-            return await fetch(new URL(join(this.url, route)), { ...init, headers: this.headers, method: "PATCH" }, FetchResultTypes.JSON);
+            return await fetch(new URL(join(this.url, route)), { ...init, headers: { ...this.headers, "Content-Type": "application/json" }, method: "PATCH" }, FetchResultTypes.JSON);
         } finally {
             this.queue.shift();
         }
@@ -112,7 +112,7 @@ export class REST {
     public async delete<T>(route: string, init?: RequestInit | undefined): Promise<T> {
         await this.queue.wait();
         try {
-            return await fetch(new URL(join(this.url, route)), { ...init, headers: this.headers, method: "DELETE" }, FetchResultTypes.JSON);
+            return await fetch(new URL(join(this.url, route)), { ...init, headers: { ...this.headers, "Content-Type": "application/json" }, method: "DELETE" }, FetchResultTypes.JSON);
         } finally {
             this.queue.shift();
         }

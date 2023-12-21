@@ -42,6 +42,9 @@ importers:
       '@sapphire/async-queue':
         specifier: ^1.5.1
         version: 1.5.1
+      '@sapphire/result':
+        specifier: ^2.6.5
+        version: 2.6.5
       '@sapphire/utilities':
         specifier: ^3.14.0
         version: 3.14.0
@@ -407,6 +410,11 @@ packages:
 
   /@sapphire/async-queue@1.5.1:
     resolution: {integrity: sha512-1RdpsmDQR/aWfp8oJzPtn4dNQrbpqSL5PIA0uAB/XwerPXUf994Ug1au1e7uGcD7ei8/F63UDjr5GWps1g/HxQ==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/result@2.6.5:
+    resolution: {integrity: sha512-bpvrUEchle+kekLdZsBj2i3zm/KzSjHn+cndDSpGIbq6fbxS5zbMoxfh3c3afOq6mx07fJL0sv7GCfqARoQg1A==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 

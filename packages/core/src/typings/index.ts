@@ -1,28 +1,22 @@
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import { Awaitable } from "@sapphire/utilities";
-import { KirishimaNode } from "../Structures/Node.js";
-import { PlayerOptions, ShardPayload } from "@kirishima/types";
-import { BasePlayer } from "src/index.js";
 
 export interface KirishimaOptions {
     clientId?: string;
     clientName?: string;
     nodes: KirishimaNodeOptions[];
-    node?: {
-        resumeKey?: string;
-        resumeTimeout?: number;
-        reconnectOnDisconnect?: boolean;
-        reconnectInterval?: number;
-        reconnectAttempts?: number;
-    };
-    send: (options: PlayerOptions, payload: ShardPayload) => Awaitable<unknown>;
-    spawnPlayer?: SpawnPlayerOptionHook;
-    fetchPlayer?: PlayerOptionHook;
+    resumeSession?: boolean;
+    resumeTimeout?: number;
+    reconnectOnDisconnect?: boolean;
+    reconnectInterval?: number;
+    reconnectAttempts?: number;
+    retriveSessionInfo?: RetriveSessionHook;
+    saveSessionInfo?: SaveSessionHook;
 }
 
-export type SpawnPlayerOptionHook = (guildId: string, options: PlayerOptions, node: KirishimaNode) => Awaitable<unknown>;
+export type RetriveSessionHook = (node: string) => Awaitable<string | null>;
 
-export type PlayerOptionHook = (guildId: string) => Awaitable<BasePlayer | undefined>;
+export type SaveSessionHook = (node: string, sessionId: string) => Awaitable<unknown>;
 
 export interface KirishimaNodeOptions {
     identifier?: string;
