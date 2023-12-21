@@ -44,6 +44,6 @@
     "rules": {}
   },
   "dependencies": {
-    "undici": "^5.28.2"
+    "undici": "^6.2.0"
   }
 }
