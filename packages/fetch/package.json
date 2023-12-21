@@ -21,12 +21,12 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "@hazmi35/eslint-config": "^11.0.0",
-    "@types/node": "^18.19.2",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
-    "eslint": "^8.55.0",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
     "rimraf": "^5.0.5",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -44,6 +44,6 @@
     "rules": {}
   },
   "dependencies": {
-    "undici": "^5.28.2"
+    "undici": "^6.2.0"
   }
 }

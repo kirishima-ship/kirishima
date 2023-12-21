@@ -12,10 +12,10 @@
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "rimraf": "^5.0.5",
-    "turbo": "^1.10.16"
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
     "@kirishima/core": "workspace:^"
+    "turbo": "^1.11.2"
   }
 }
