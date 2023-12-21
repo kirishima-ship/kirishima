@@ -50,7 +50,7 @@
   "dependencies": {
     "@kirishima/fetch": "workspace:^",
     "@sapphire/async-queue": "^1.5.1",
-    "lavalink-api-types": "^2.0.2"
+    "lavalink-api-types": "^2.0.2",
     "undici": "^6.2.0"
   }
 }
