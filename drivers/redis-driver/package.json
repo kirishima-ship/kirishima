@@ -1,5 +1,5 @@
 {
-  "name": "@kirishima/template",
+  "name": "@kirishima/redis-driver",
   "version": "1.0.0",
   "description": "A Template package for kirishima project.",
   "main": "./dist/index.js",
@@ -42,5 +42,9 @@
       "@hazmi35/eslint-config/typescript"
     ],
     "rules": {}
+  },
+  "dependencies": {
+    "@kirishima/core-driver": "workspace:^",
+    "ioredis": "^5.3.2"
   }
 }

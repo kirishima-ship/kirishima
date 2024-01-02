@@ -1,7 +1,7 @@
 {
-  "name": "@kirishima/template",
+  "name": "@kirishima/core-driver",
   "version": "1.0.0",
-  "description": "A Template package for kirishima project.",
+  "description": "A Core Cache driver for Kirishima.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -41,6 +41,11 @@
       "plugin:@typescript-eslint/recommended",
       "@hazmi35/eslint-config/typescript"
     ],
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/naming-convention": "off"
+    }
+  },
+  "dependencies": {
+    "@sapphire/utilities": "^3.15.1"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@kirishima/template",
+  "name": "@kirishima/surreal-driver",
   "version": "1.0.0",
   "description": "A Template package for kirishima project.",
   "main": "./dist/index.js",
@@ -41,6 +41,14 @@
       "plugin:@typescript-eslint/recommended",
       "@hazmi35/eslint-config/typescript"
     ],
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/naming-convention": "off"
+    }
+  },
+  "dependencies": {
+    "@kirishima/core-driver": "workspace:^",
+    "cirql": "^1.0.1",
+    "surrealdb.js": "^0.11.0",
+    "zod": "^3.22.4"
   }
 }
