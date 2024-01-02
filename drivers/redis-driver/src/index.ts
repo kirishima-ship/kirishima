@@ -28,9 +28,16 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
 
     // TODO: check if this working?
     public async values(clientId: string, count = 1000): Promise<PlayerData[]> {
-        const data = await redisScan(this.redis, clientId, count);
-        const result: PlayerData[] = data.map(val => JSON.parse(val));
-        return result;
+        const keys = await redisScan(this.redis, clientId, count);
+        const values: PlayerData[] = [];
+
+        for (const key of keys) {
+            const data = await this.redis.get(key)!;
+            const parsedData = JSON.parse(data!) as PlayerData;
+            values.push(parsedData);
+        }
+
+        return values;
     }
 
     // TODO: unlimit redis scan
