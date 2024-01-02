@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@kirishima/core-driver": "workspace:^",
+    "@nezuchan/utilities": "^0.6.2",
     "ioredis": "^5.3.2"
   }
 }
