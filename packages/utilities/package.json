@@ -21,7 +21,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "@hazmi35/eslint-config": "^11.0.0",
-    "@types/node": "^18.19.2",
+    "@types/node": "^18.19.5",
     "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.18.0",
     "eslint": "^8.56.0",
@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "@kirishima/types": "workspace:^",
-    "discord-api-types": "^0.37.65"
+    "discord-api-types": "^0.37.67"
   }
 }
