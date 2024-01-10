@@ -9,31 +9,57 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
     }
 
     public async get(clientId: string, guildId: string): Promise<PlayerData | null> {
-        const data = (await this.redis.get(`${clientId}:${guildId}`))!;
+        const data = (await this.redis.hgetall(`player:${clientId}:${guildId}`))!;
 
-        if (!data) return null;
+        const parsedData: any = {};
+        Object.entries(data).forEach(([key, value]) => {
+            try {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                parsedData[key] = JSON.parse(value);
+            } catch {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                parsedData[key] = value;
+            }
+        });
 
-        const parsedData: PlayerData = JSON.parse(data);
         return parsedData;
     }
 
-    public async set(clientId: string, guildId: string, data: PlayerData): Promise<PlayerData> {
-        await this.redis.set(`${clientId}:${guildId}`, JSON.stringify(data));
+    public set(clientId: string, guildId: string, data: PlayerData): PlayerData {
+        Object.entries(data).forEach(async ([key, value]) => {
+            if (typeof value === "object") {
+                value = JSON.stringify(value);
+            }
+
+            await this.redis.hset(`player:${clientId}:${guildId}`, key, value as string);
+        });
+
         return data;
     }
 
     public async delete(clientId: string, guildId: string): Promise<void> {
-        await this.redis.del(`${clientId}:${guildId}`);
+        await this.redis.hdel(`player:${clientId}:${guildId}`);
     }
 
     // TODO: check if this working?
     public async values(clientId: string, count = 1000): Promise<PlayerData[]> {
         const keys = await redisScan(this.redis, clientId, count);
-        const values: PlayerData[] = [];
+        const values: any[] = [];
 
         for (const key of keys) {
-            const data = await this.redis.get(key)!;
-            const parsedData = JSON.parse(data!) as PlayerData;
+            const data = (await this.redis.hgetall(key))!;
+
+            const parsedData: any = {};
+            Object.entries(data).forEach(([keyData, value]) => {
+                try {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    parsedData[keyData] = JSON.parse(value);
+                } catch {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    parsedData[keyData] = value;
+                }
+            });
+
             values.push(parsedData);
         }
 
