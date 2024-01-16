@@ -41,9 +41,8 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
         await this.redis.hdel(`player:${clientId}:${guildId}`);
     }
 
-    // TODO: check if this working?
-    public async values(clientId: string, count = 1000): Promise<PlayerData[]> {
-        const keys = await redisScan(this.redis, clientId, count);
+    public async values(clientId: string): Promise<PlayerData[]> {
+        const keys = await redisScan(this.redis, clientId, 5000);
         const values: any[] = [];
 
         for (const key of keys) {
@@ -66,9 +65,8 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
         return values;
     }
 
-    // TODO: unlimit redis scan
     public async size(clientId: string): Promise<number> {
-        const data = await redisScan(this.redis, clientId, 1000);
+        const data = await redisScan(this.redis, clientId, 5000);
         return data.length;
     }
 }
