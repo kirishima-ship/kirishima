@@ -6,6 +6,7 @@ import crypto from "node:crypto";
 
 import { KirishimaNode } from "./Node.js";
 import { Collection } from "@discordjs/collection";
+import { Player } from "./Player.js";
 
 export class Kirishima extends EventEmitter {
     public nodes = new Collection<string, KirishimaNode>();
@@ -22,16 +23,6 @@ export class Kirishima extends EventEmitter {
 
     public get clientName() {
         return this.options.clientName;
-    }
-
-    public get getNodeOptions() {
-        return {
-            resumeSession: this.options.resumeSession,
-            resumeTimeout: this.options.resumeTimeout,
-            reconnectOnDisconnect: this.options.reconnectOnDisconnect,
-            reconnectInterval: this.options.reconnectInterval,
-            reconnectAttempts: this.options.reconnectAttempts
-        };
     }
 
     public async initialize(clientId?: string): Promise<Kirishima> {
@@ -84,5 +75,10 @@ export class Kirishima extends EventEmitter {
                 const YLoad = y.stats?.cpu ? (y.stats.cpu.systemLoad / y.stats.cpu.cores) * 100 : 0;
                 return XLoad - YLoad;
             });
+    }
+
+    public async resolvePlayer(clientId: string, guildId: string) {
+        const cache = await this.options.retrivePlayer(clientId, guildId);
+        return cache ? new Player(cache, this) : null;
     }
 }
