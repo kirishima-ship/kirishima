@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "@kirishima/types": "workspace:^",
-    "discord-api-types": "^0.37.65"
+    "discord-api-types": "^0.37.67"
   }
 }
