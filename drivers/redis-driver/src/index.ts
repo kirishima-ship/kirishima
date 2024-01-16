@@ -12,7 +12,7 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
         const data = await this.redis.hgetall(`player:${clientId}:${guildId}`);
 
         const parsedData: any = {};
-        Object.entries(data).forEach(([key, value]) => {
+        for (const [key, value] of Object.entries(data)) {
             try {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 parsedData[key] = JSON.parse(value);
@@ -20,19 +20,18 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 parsedData[key] = value;
             }
-        });
+        }
 
         return parsedData;
     }
 
-    public set(clientId: string, guildId: string, data: PlayerData): PlayerData {
-        Object.entries(data).forEach(async ([key, value]) => {
+    public async set(clientId: string, guildId: string, data: PlayerData): Promise<PlayerData> {
+        for (let [key, value] of Object.entries(data)) {
             if (typeof value === "object") {
                 value = JSON.stringify(value);
             }
-
             await this.redis.hset(`player:${clientId}:${guildId}`, key, value as string);
-        });
+        }
 
         return data;
     }
@@ -49,7 +48,7 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
             const data = await this.redis.hgetall(key);
 
             const parsedData: any = {};
-            Object.entries(data).forEach(([keyData, value]) => {
+            for (const [keyData, value] of Object.entries(data)) {
                 try {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     parsedData[keyData] = JSON.parse(value);
@@ -57,7 +56,7 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     parsedData[keyData] = value;
                 }
-            });
+            }
 
             values.push(parsedData);
         }

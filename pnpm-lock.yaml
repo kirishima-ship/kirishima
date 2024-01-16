@@ -47,6 +47,37 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  drivers/map-driver:
+    dependencies:
+      '@discordjs/collection':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@kirishima/core-driver':
+        specifier: workspace:^
+        version: link:../core-driver
+    devDependencies:
+      '@hazmi35/eslint-config':
+        specifier: ^12.0.0
+        version: 12.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.19.0)(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
+      '@types/node':
+        specifier: ^20.11.3
+        version: 20.11.3
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.19.0
+        version: 6.19.0(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
+      '@typescript-eslint/parser':
+        specifier: ^6.19.0
+        version: 6.19.0(eslint@8.56.0)(typescript@5.3.3)
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   drivers/redis-driver:
     dependencies:
       '@kirishima/core-driver':
@@ -123,6 +154,9 @@ importers:
       '@discordjs/collection':
         specifier: ^2.0.0
         version: 2.0.0
+      '@kirishima/core-driver':
+        specifier: workspace:^
+        version: link:../../drivers/core-driver
       '@kirishima/fetch':
         specifier: workspace:^
         version: link:../fetch
