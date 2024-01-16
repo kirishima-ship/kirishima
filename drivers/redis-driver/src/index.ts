@@ -9,7 +9,7 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
     }
 
     public async get(clientId: string, guildId: string): Promise<PlayerData | null> {
-        const data = (await this.redis.hgetall(`player:${clientId}:${guildId}`))!;
+        const data = await this.redis.hgetall(`player:${clientId}:${guildId}`);
 
         const parsedData: any = {};
         Object.entries(data).forEach(([key, value]) => {
@@ -46,7 +46,7 @@ export class RedisPlayerDriver implements PlayerCacheDriver {
         const values: any[] = [];
 
         for (const key of keys) {
-            const data = (await this.redis.hgetall(key))!;
+            const data = await this.redis.hgetall(key);
 
             const parsedData: any = {};
             Object.entries(data).forEach(([keyData, value]) => {
