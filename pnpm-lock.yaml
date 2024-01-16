@@ -19,52 +19,24 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
 
-  drivers/core:
-    dependencies:
-      '@sapphire/utilities':
-        specifier: ^3.15.1
-        version: 3.15.1
-    devDependencies:
-      '@hazmi35/eslint-config':
-        specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.17.0)(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
-      '@types/node':
-        specifier: ^20.10.5
-        version: 20.10.5
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.17.0
-        version: 6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
-      '@typescript-eslint/parser':
-        specifier: ^6.17.0
-        version: 6.17.0(eslint@8.56.0)(typescript@5.3.3)
-      eslint:
-        specifier: ^8.56.0
-        version: 8.56.0
-      rimraf:
-        specifier: ^5.0.5
-        version: 5.0.5
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-
   drivers/core-driver:
     dependencies:
       '@sapphire/utilities':
         specifier: ^3.15.1
-        version: 3.15.1
+        version: 3.15.2
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.17.0)(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.19.0)(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.17.0
-        version: 6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser':
         specifier: ^6.17.0
-        version: 6.17.0(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(eslint@8.56.0)(typescript@5.3.3)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -89,16 +61,16 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.17.0)(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.19.0)(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.17.0
-        version: 6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser':
         specifier: ^6.17.0
-        version: 6.17.0(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(eslint@8.56.0)(typescript@5.3.3)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -126,16 +98,16 @@ importers:
     devDependencies:
       '@hazmi35/eslint-config':
         specifier: ^11.0.0
-        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.17.0)(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 11.0.0(@eslint/js@8.56.0)(@typescript-eslint/eslint-plugin@6.19.0)(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.17.0
-        version: 6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser':
         specifier: ^6.17.0
-        version: 6.17.0(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.19.0(eslint@8.56.0)(typescript@5.3.3)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -766,13 +738,14 @@ packages:
     resolution: {integrity: sha512-bpvrUEchle+kekLdZsBj2i3zm/KzSjHn+cndDSpGIbq6fbxS5zbMoxfh3c3afOq6mx07fJL0sv7GCfqARoQg1A==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
+
   /@sapphire/snowflake@3.5.2:
     resolution: {integrity: sha512-FTm9RdyELF21PQN5dS/HLRs90XqWclHa+p0gkonc+BA2X2QKfFySHSjUbO65rmArd/ghR9Ahj2fMfedTZEqzOw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
+
   /@sapphire/utilities@3.15.2:
     resolution: {integrity: sha512-pp4+8wHK8C1oFMjA1nwGXT7rgf41NzlRlJi9QIy+PGOOEHjuaUHQRgfzghkJgSJtSKjjoO9KxBQ8YmyCnjlu+g==}
-
     engines: {node: '>=v14.0.0'}
     dev: false
 
