@@ -23,6 +23,11 @@ export class KirishimaNode {
         this.rest = new REST(`${this.options.url.endsWith("443") || this.options.secure ? "https" : "http"}://${this.options.url}`, {
             Authorization: this.options.password ??= "youshallnotpass"
         });
+
+        this.ws = new Gateway(`${this.options.url.endsWith("443") || this.options.secure ? "wss" : "ws"}://${this.options.url}/v4/websocket`)
+            .setAuthorization(this.options.password ?? "youshallnotpass")
+            .setClientId(this.kirishima.clientId!)
+            .setClientName(this.kirishima.clientName ?? "Kirishima-Ship/1.0.0");
     }
 
     public get connected(): boolean {
@@ -35,11 +40,6 @@ export class KirishimaNode {
         if ("retriveSessionInfo" in this.kirishima.options && this.kirishima.options.retriveSessionInfo && this.options.identifier) {
             this.sessionId = await this.kirishima.options.retriveSessionInfo(this.options.identifier);
         }
-
-        this.ws = new Gateway(`${this.options.url.endsWith("443") || this.options.secure ? "wss" : "ws"}://${this.options.url}/v4/websocket`)
-            .setAuthorization(this.options.password ??= "youshallnotpass")
-            .setClientId(this.kirishima.options.clientId!)
-            .setClientName(this.kirishima.options.clientName ??= "KiriShima/1.0.0");
 
         if ((this.kirishima.options.resumeSession ?? true) && this.sessionId) this.ws.setSessionId(this.sessionId);
 

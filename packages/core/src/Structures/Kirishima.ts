@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { EventEmitter } from "node:events";
 import { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
@@ -15,9 +16,27 @@ export class Kirishima extends EventEmitter {
         if (!options.nodes.length) throw new Error("Nodes option must not a empty array");
     }
 
+    public get clientId() {
+        return this.options.clientId;
+    }
+
+    public get clientName() {
+        return this.options.clientName;
+    }
+
+    public get getNodeOptions() {
+        return {
+            resumeSession: this.options.resumeSession,
+            resumeTimeout: this.options.resumeTimeout,
+            reconnectOnDisconnect: this.options.reconnectOnDisconnect,
+            reconnectInterval: this.options.reconnectInterval,
+            reconnectAttempts: this.options.reconnectAttempts
+        };
+    }
+
     public async initialize(clientId?: string): Promise<Kirishima> {
-        if (!clientId && !this.options.clientId) throw new Error("Invalid clientId provided");
-        if (clientId && !this.options.clientId) this.options.clientId = clientId;
+        if (!clientId && !this.clientId) throw new Error("Invalid clientId provided");
+        if (clientId && !this.clientId) this.options.clientId = clientId;
         return this.setNodes(this.options.nodes);
     }
 
