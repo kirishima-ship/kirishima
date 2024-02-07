@@ -28,8 +28,8 @@ export interface PlayerData {
     client_id: string;
     guild_id: string;
     position: number;
-    text_channel_id: string;
-    voice_channel_id: string;
+    text_channel_id?: string;
+    voice_channel_id?: string;
     message_id?: string;
     loop: number;
     node: string;
