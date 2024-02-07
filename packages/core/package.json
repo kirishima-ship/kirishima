@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "@discordjs/collection": "^2.0.0",
-    "@kirishima/core-driver": "workspace:^",
     "@kirishima/fetch": "workspace:^",
     "@kirishima/rest": "workspace:^",
     "@kirishima/types": "workspace:^",
