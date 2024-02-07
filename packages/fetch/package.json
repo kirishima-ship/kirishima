@@ -21,7 +21,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "@hazmi35/eslint-config": "^12.0.0",
-    "@types/node": "^20.11.3",
+    "@types/node": "^20.11.16",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
@@ -44,6 +44,6 @@
     "rules": {}
   },
   "dependencies": {
-    "undici": "^6.3.0"
+    "undici": "^6.6.2"
   }
 }
