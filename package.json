@@ -14,7 +14,7 @@
   "devDependencies": {
     "eslint": "^8.56.0",
     "rimraf": "^5.0.5",
-    "@hazmi35/eslint-config": "^13.2.4",
+    "@hazmi35/eslint-config": "^13.3.0",
     "turbo": "^1.12.3"
   }
 }
