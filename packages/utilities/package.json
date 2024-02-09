@@ -20,12 +20,12 @@
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@types/node": "^20.11.16",
+    "@types/node": "^20.11.17",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "@kirishima/types": "workspace:^",
-    "discord-api-types": "^0.37.68"
+    "discord-api-types": "^0.37.69"
   }
 }
