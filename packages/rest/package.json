@@ -12,40 +12,17 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext ts",
-    "lint:fix": "eslint src --fix --ext ts",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "build": "tsc"
   },
   "type": "module",
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@hazmi35/eslint-config": "^13.2.4",
     "@types/node": "^20.11.16",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "@hazmi35/eslint-config/typescript"
-    ],
-    "rules": {
-      "class-methods-use-this": "off",
-      "no-nested-ternary": "off",
-      "@typescript-eslint/no-unsafe-enum-comparison": "off"
-    }
   },
   "dependencies": {
     "@kirishima/fetch": "workspace:^",

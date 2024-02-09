@@ -1,14 +1,17 @@
+import type { IncomingMessage } from "node:http";
 import { AsyncQueue } from "@sapphire/async-queue";
-import EventEmitter from "node:events";
-import { IncomingMessage } from "node:http";
+import { TypedEmitter } from "tiny-typed-emitter";
 import { WebSocket } from "ws";
 
-export interface Gateway {
-    on: ((event: "message", listener: (gateway: Gateway, raw: unknown) => void) => this) & ((event: "open", listener: (gateway: Gateway) => void) => this) & ((event: "close", listener: (gateway: Gateway, code: number) => void) => this) & ((event: "error", listener: (gateway: Gateway, error: Error) => void) => this) & ((event: "upgrade", listener: (gateway: Gateway, msg: IncomingMessage) => void) => this);
-    once: ((event: "message", listener: (gateway: Gateway, raw: unknown) => void) => this) & ((event: "open", listener: (gateway: Gateway) => void) => this) & ((event: "close", listener: (gateway: Gateway, code: number) => void) => this) & ((event: "error", listener: (gateway: Gateway, error: Error) => void) => this) & ((event: "upgrade", listener: (gateway: Gateway, msg: IncomingMessage) => void) => this);
-}
+type GatewayEvents = {
+    close(gateway: Gateway, code: number): void;
+    error(gateway: Gateway, error: Error): void;
+    message(gateway: Gateway, raw: unknown): void;
+    open(gateway: Gateway): void;
+    upgrade(gateway: Gateway, msg: IncomingMessage): void;
+};
 
-export class Gateway extends EventEmitter {
+export class Gateway extends TypedEmitter<GatewayEvents> {
     public connection: WebSocket | undefined;
     public queue = new AsyncQueue();
     public headers: Record<string, string> = {};
@@ -28,7 +31,7 @@ export class Gateway extends EventEmitter {
     }
 
     public setAuthorization(authorization: string): this {
-        this.headers["Authorization"] = authorization;
+        this.headers.Authorization = authorization;
         return this;
     }
 
@@ -50,7 +53,7 @@ export class Gateway extends EventEmitter {
             this.connection.on("close", code => this.emit("close", this, code));
             this.connection.on("error", error => this.emit("error", this, error));
             this.connection.on("upgrade", res => this.emit("upgrade", this, res));
-            return resolve(this);
+            resolve(this);
         });
     }
 

@@ -1,13 +1,13 @@
-export interface PlayerOptions {
+export type PlayerOptions = {
     guildId: string;
     shardId?: number;
     voiceChannelId: string;
     textChannelId?: string;
     selfDeaf?: boolean;
     selfMute?: boolean;
-}
+};
 
-export interface ShardPayload {
+export type ShardPayload = {
     op: number;
     d: {
         guild_id: string;
@@ -15,15 +15,15 @@ export interface ShardPayload {
         self_deaf: boolean;
         self_mute: boolean;
     };
-}
+};
 
-export interface PlayerVoiceData {
+export type PlayerVoiceData = {
     session_id: string;
     endpoint: string;
     token: string;
-}
+};
 
-export interface PlayerData {
+export type PlayerData = {
     id: string;
     client_id: string;
     guild_id: string;
@@ -36,4 +36,4 @@ export interface PlayerData {
     index: number;
     volume: number;
     voice: PlayerVoiceData;
-}
+};

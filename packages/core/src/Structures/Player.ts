@@ -1,18 +1,17 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-shadow */
-import { PlayerData } from "@kirishima/types";
-import { Kirishima } from "./Kirishima.js";
-import { KirishimaNode } from "./Node.js";
-import { GatewayOpcodes, GatewayVoiceServerUpdateDispatch, GatewayVoiceServerUpdateDispatchData, GatewayVoiceState, GatewayVoiceStateUpdateDispatch } from "discord-api-types/v10";
+/* eslint-disable id-length */
+
+import type { PlayerData } from "@kirishima/types";
+import type { GatewayVoiceServerUpdateDispatch, GatewayVoiceServerUpdateDispatchData, GatewayVoiceState, GatewayVoiceStateUpdateDispatch } from "discord-api-types/v10";
+import { GatewayOpcodes } from "discord-api-types/v10";
 import { Routes } from "lavalink-api-types/v4";
+import type { Kirishima } from "./Kirishima.js";
+import type { KirishimaNode } from "./Node.js";
 
 export class Player {
     public constructor(
         public data: PlayerData,
         public kirishima: Kirishima
-    ) {
-
-    }
+    ) {}
 
     public get node(): KirishimaNode {
         return this.kirishima.resolveNode(this.data.node)!;
@@ -34,8 +33,8 @@ export class Player {
         return this.node.voiceServers.get(this.guildId);
     }
 
-    public async connect(channelId?: string, options?: { selfDeaf?: boolean; selfMute?: boolean }): Promise<void> {
-        if (channelId && (channelId !== this.channelId)) {
+    public async connect(channelId?: string, options?: { selfDeaf?: boolean; selfMute?: boolean; }): Promise<void> {
+        if (channelId !== undefined && (channelId !== this.channelId)) {
             this.data.voice_channel_id = channelId;
             await this.kirishima.options.savePlayer(this.data);
         }
@@ -74,12 +73,13 @@ export class Player {
     public async setStateUpdate(packet: GatewayVoiceStateUpdateDispatch): Promise<void> {
         if (packet.d.user_id !== this.kirishima.clientId) return;
 
-        if (packet.d.channel_id && packet.d.guild_id) {
+        if (packet.d.channel_id !== undefined && packet.d.guild_id !== undefined) {
             this.node.voiceStates.set(packet.d.guild_id, packet.d);
-            return this.sendVoiceUpdate();
+            await this.sendVoiceUpdate();
+            return;
         }
 
-        if (packet.d.guild_id) {
+        if (packet.d.guild_id !== undefined) {
             this.node.voiceServers.delete(packet.d.guild_id);
             this.node.voiceStates.delete(packet.d.guild_id);
             await this.connect();

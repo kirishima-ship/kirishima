@@ -1,12 +1,13 @@
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
-import { PlayerData, ShardPayload } from "@kirishima/types";
-import { Awaitable } from "@sapphire/utilities";
+import type { PlayerData, ShardPayload } from "@kirishima/types";
+import type { Awaitable } from "@sapphire/utilities";
 
-export interface KirishimaOptions {
+export type KirishimaOptions = {
     clientId?: string;
     clientName?: string;
 
-    /** Node Options */
+    /**
+     * Node Options
+     */
     nodes: KirishimaNodeOptions[];
     resumeSession?: boolean;
     resumeTimeout?: number;
@@ -14,13 +15,15 @@ export interface KirishimaOptions {
     reconnectInterval?: number;
     reconnectAttempts?: number;
 
-    /** Hooks */
+    /**
+     * Hooks
+     */
     retriveSessionInfo?: RetriveSessionHook;
     saveSessionInfo?: SaveSessionHook;
     retrivePlayer: RetrivePlayerHook;
     savePlayer: SavePlayerHook;
     send: SendHook;
-}
+};
 
 export type SendHook = (payload: ShardPayload) => Awaitable<unknown>;
 
@@ -32,10 +35,10 @@ export type RetriveSessionHook = (node: string) => Awaitable<string | null>;
 
 export type SaveSessionHook = (node: string, sessionId: string) => Awaitable<void>;
 
-export interface KirishimaNodeOptions {
+export type KirishimaNodeOptions = {
     identifier?: string;
     url: string;
     secure?: boolean;
     password?: string;
     group?: string[];
-}
+};
