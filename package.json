@@ -12,10 +12,9 @@
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "rimraf": "^5.0.5"
-  },
-  "dependencies": {
-    "@kirishima/core": "workspace:^",
+    "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
+    "@hazmi35/eslint-config": "^13.2.4",
     "turbo": "^1.12.3"
   }
 }

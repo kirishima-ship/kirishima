@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
+/* eslint-disable unicorn/no-nested-ternary */
+import { join } from "node:path";
+import { URL } from "node:url";
 import { fetch, FetchResultTypes } from "@kirishima/fetch";
 import { AsyncQueue } from "@sapphire/async-queue";
-import { RequestInit } from "undici";
-import { join } from "path";
-import { LavalinkSearchIdentifier, LavalinkSource, LoadTrackResponse, RoutePlannerStatusResponse, Routes, Track } from "lavalink-api-types/v4";
+import type { LoadTrackResponse, RoutePlannerStatusResponse, Track } from "lavalink-api-types/v4";
+import { LavalinkSearchIdentifier, LavalinkSource, Routes } from "lavalink-api-types/v4";
+import type { RequestInit } from "undici";
 
 export class REST {
     public headers: Record<string, string> = {};
@@ -42,11 +46,11 @@ export class REST {
     }
 
     public setAuthorization(auth: string): this {
-        this.headers["Authorization"] = auth;
+        this.headers.Authorization = auth;
         return this;
     }
 
-    public loadTracks(options: { source?: LavalinkSource; query: string } | string): Promise<LoadTrackResponse> {
+    public async loadTracks(options: string | { source?: LavalinkSource; query: string; }): Promise<LoadTrackResponse> {
         if (typeof options === "string") {
             return this.get<LoadTrackResponse>(
                 Routes.loadTracks(
@@ -60,16 +64,16 @@ export class REST {
         const { query } = options;
         return this.get<LoadTrackResponse>(
             Routes.loadTracks(
-                this.isUrl(options.query)
+                this.isUrl(query)
                     ? encodeURIComponent(query)
                     : query.includes(":")
                         ? query
-                        : `${encodeURIComponent(`${this.resolveIdentifier(source)}:${query}`)}`
+                        : encodeURIComponent(`${this.resolveIdentifier(source)}:${query}`)
             )
         );
     }
 
-    public decodeTracks(trackOrTracks: Track["encoded"][] | Track["encoded"]): Promise<Track[]> {
+    public async decodeTracks(trackOrTracks: Track["encoded"] | Track["encoded"][]): Promise<Track[]> {
         if (Array.isArray(trackOrTracks)) {
             return this.post<Track[]>(Routes.decodeTracks(), {
                 body: JSON.stringify(trackOrTracks),

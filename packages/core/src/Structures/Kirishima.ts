@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable no-await-in-loop */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import { EventEmitter } from "node:events";
-import { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
 import crypto from "node:crypto";
+import { EventEmitter } from "node:events";
+import { Collection } from "@discordjs/collection";
+import type { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
 
 import { KirishimaNode } from "./Node.js";
-import { Collection } from "@discordjs/collection";
 import { Player } from "./Player.js";
 
 export class Kirishima extends EventEmitter {
@@ -14,20 +14,20 @@ export class Kirishima extends EventEmitter {
     public constructor(public options: KirishimaOptions) {
         super();
 
-        if (!options.nodes.length) throw new Error("Nodes option must not a empty array");
+        if (options.nodes.length === 0) throw new Error("Nodes option must not a empty array");
     }
 
-    public get clientId() {
+    public get clientId(): string | undefined {
         return this.options.clientId;
     }
 
-    public get clientName() {
+    public get clientName(): string | undefined {
         return this.options.clientName;
     }
 
     public async initialize(clientId?: string): Promise<Kirishima> {
-        if (!clientId && !this.clientId) throw new Error("Invalid clientId provided");
-        if (clientId && !this.clientId) this.options.clientId = clientId;
+        if ((clientId === undefined) && (this.clientId === undefined)) throw new Error("Invalid clientId provided");
+        if (clientId === undefined && this.clientId === undefined) this.options.clientId = clientId;
         return this.setNodes(this.options.nodes);
     }
 
@@ -36,9 +36,9 @@ export class Kirishima extends EventEmitter {
         if (isArray) {
             for (const node of nodeOrNodes) {
                 node.identifier ??= crypto.randomBytes(4).toString("hex");
-                const kirishimaNode = new KirishimaNode(node, this);
-                await kirishimaNode.connect();
-                this.nodes.set(node.identifier, kirishimaNode);
+                const kNode = new KirishimaNode(node, this);
+                await kNode.connect();
+                this.nodes.set(node.identifier, kNode);
             }
             return this;
         }
@@ -77,7 +77,7 @@ export class Kirishima extends EventEmitter {
             });
     }
 
-    public async resolvePlayer(clientId: string, guildId: string) {
+    public async resolvePlayer(clientId: string, guildId: string): Promise<Player | null> {
         const cache = await this.options.retrivePlayer(clientId, guildId);
         return cache ? new Player(cache, this) : null;
     }

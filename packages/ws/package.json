@@ -12,44 +12,22 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext ts",
-    "lint:fix": "eslint src --fix --ext ts",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "build": "tsc"
   },
   "type": "module",
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@hazmi35/eslint-config": "^12.0.0",
     "@types/node": "^20.11.16",
     "@types/ws": "^8.5.10",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "@hazmi35/eslint-config/typescript"
-    ],
-    "rules": {
-      "@typescript-eslint/no-unnecessary-condition": "off",
-      "@typescript-eslint/no-unsafe-declaration-merging": "off",
-      "@typescript-eslint/no-base-to-string": "off"
-    }
-  },
   "dependencies": {
-    "@sapphire/async-queue": "^1.5.2",
+    "@sapphire/async-queue": "^1.5.1",
+    "tiny-typed-emitter": "^2.1.0",
     "ws": "^8.16.0"
   },
   "optionalDependencies": {
