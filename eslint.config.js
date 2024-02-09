@@ -1,7 +1,16 @@
 import { common, modules, node, extend, stylistic, ignores, typescript } from "@hazmi35/eslint-config";
 
 export default [
-    ...common,
+    ...extend(common, [
+        {
+            rule: "id-length",
+            option: ["off"]
+        },
+        {
+            rule: "no-return-assign",
+            option: ["off"]
+        }
+    ]),
     ...modules,
     ...node,
     ...stylistic,

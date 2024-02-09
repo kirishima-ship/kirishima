@@ -1,5 +1,3 @@
-/* eslint-disable id-length */
-/* eslint-disable no-return-assign */
 import type { PlayerOptions, ShardPayload } from "@kirishima/types";
 import { GatewayOpcodes } from "discord-api-types/v10";
 
