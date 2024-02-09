@@ -1,5 +1,3 @@
-/* eslint-disable id-length */
-
 import type { PlayerData } from "@kirishima/types";
 import type { GatewayVoiceServerUpdateDispatch, GatewayVoiceServerUpdateDispatchData, GatewayVoiceState, GatewayVoiceStateUpdateDispatch } from "discord-api-types/v10";
 import { GatewayOpcodes } from "discord-api-types/v10";
