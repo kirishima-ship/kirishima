@@ -163,7 +163,7 @@ importers:
   packages/ws:
     dependencies:
       '@sapphire/async-queue':
-        specifier: ^1.5.1
+        specifier: ^1.5.2
         version: 1.5.2
       tiny-typed-emitter:
         specifier: ^2.1.0
