@@ -2,13 +2,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import crypto from "node:crypto";
 import { Collection } from "@discordjs/collection";
+import type { Gateway } from "@kirishima/ws";
+import { TypedEmitter } from "tiny-typed-emitter";
 import type { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
 
 import { KirishimaNode } from "./Node.js";
 import { Player } from "./Player.js";
-
-import { TypedEmitter } from "tiny-typed-emitter";
-import { Gateway } from "@kirishima/ws";
 
 type KirishimaEvents = {
     nodeDisconnect(node: KirishimaNode, gateway: Gateway, code: number): void;
@@ -18,7 +17,7 @@ type KirishimaEvents = {
     nodeReady(node: KirishimaNode, gateway: Gateway, message: unknown): void;
     nodeRaw(node: KirishimaNode, gateway: Gateway, message: unknown): void;
     nodeConnect(node: KirishimaNode, gateway: Gateway): void;
-}
+};
 
 export class Kirishima extends TypedEmitter<KirishimaEvents> {
     public nodes = new Collection<string, KirishimaNode>();
