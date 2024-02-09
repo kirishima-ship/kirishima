@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@hazmi35/eslint-config':
-        specifier: ^13.2.4
-        version: 13.2.4(@eslint/eslintrc@3.0.0)(@stylistic/eslint-plugin@1.6.0)(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.1)(eslint-plugin-jsdoc@48.0.6)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.1.1)(eslint-plugin-tsdoc@0.2.17)(eslint-plugin-unicorn@50.0.1)(eslint@8.56.0)(typescript@5.3.3)
+        specifier: ^13.3.0
+        version: 13.3.0(@eslint/eslintrc@3.0.0)(@stylistic/eslint-plugin@1.6.0)(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.1)(eslint-plugin-jsdoc@48.0.6)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.1.1)(eslint-plugin-tsdoc@0.2.17)(eslint-plugin-unicorn@51.0.1)(eslint@8.56.0)(typescript@5.3.3)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -294,22 +294,22 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@hazmi35/eslint-config@13.2.4(@eslint/eslintrc@3.0.0)(@stylistic/eslint-plugin@1.6.0)(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.1)(eslint-plugin-jsdoc@48.0.6)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.1.1)(eslint-plugin-tsdoc@0.2.17)(eslint-plugin-unicorn@50.0.1)(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-KvEDedYbzE4wmuuUIiAJkdSmu/JuCAYy43mKHrzJrZ7/zvHrw48fXpinGxsl4Js4wTXW27DIknDOHs/mNfOXzA==}
+  /@hazmi35/eslint-config@13.3.0(@eslint/eslintrc@3.0.0)(@stylistic/eslint-plugin@1.6.0)(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.1)(eslint-plugin-jsdoc@48.0.6)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.1.1)(eslint-plugin-tsdoc@0.2.17)(eslint-plugin-unicorn@51.0.1)(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-KOIZPduWBOv7KZtcZiGdOQzAIcTCMfOrFs2FrcQReqdQzcCyPyzHPTksRDCwdha4KBS/cEgmEhO/iXj43Kdb9g==}
     peerDependencies:
       '@eslint/eslintrc': ^3.0.0
-      '@stylistic/eslint-plugin': ^1.5.4
-      '@typescript-eslint/eslint-plugin': '>=6.19.0'
-      '@typescript-eslint/parser': '>=6.19.0'
+      '@stylistic/eslint-plugin': ^1.6.0
+      '@typescript-eslint/eslint-plugin': '>=6.21.0'
+      '@typescript-eslint/parser': '>=6.21.0'
       eslint: '>=8.56.0'
       eslint-config-prettier: ^9.1.0
       eslint-import-resolver-typescript: ^3.6.1
       eslint-plugin-import: ^2.29.1
-      eslint-plugin-jsdoc: ^48.0.4
+      eslint-plugin-jsdoc: ^48.0.6
       eslint-plugin-n: ^16.6.2
       eslint-plugin-promise: ^6.1.1
       eslint-plugin-tsdoc: ^0.2.17
-      eslint-plugin-unicorn: ^50.0.1
+      eslint-plugin-unicorn: ^51.0.1
       typescript: '>=4.3.5 <5.4.0'
     dependencies:
       '@eslint/eslintrc': 3.0.0
@@ -324,7 +324,7 @@ packages:
       eslint-plugin-n: 16.6.2(eslint@8.56.0)
       eslint-plugin-promise: 6.1.1(eslint@8.56.0)
       eslint-plugin-tsdoc: 0.2.17
-      eslint-plugin-unicorn: 50.0.1(eslint@8.56.0)
+      eslint-plugin-unicorn: 51.0.1(eslint@8.56.0)
       typescript: 5.3.3
     dev: true
 
@@ -1332,8 +1332,8 @@ packages:
       '@microsoft/tsdoc-config': 0.16.2
     dev: true
 
-  /eslint-plugin-unicorn@50.0.1(eslint@8.56.0):
-    resolution: {integrity: sha512-KxenCZxqSYW0GWHH18okDlOQcpezcitm5aOSz6EnobyJ6BIByiPDviQRjJIUAjG/tMN11958MxaQ+qCoU6lfDA==}
+  /eslint-plugin-unicorn@51.0.1(eslint@8.56.0):
+    resolution: {integrity: sha512-MuR/+9VuB0fydoI0nIn2RDA5WISRn4AsJyNSaNKLVwie9/ONvQhxOBbkfSICBPnzKrB77Fh6CZZXjgTt/4Latw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>=8.56.0'
