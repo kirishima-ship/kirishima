@@ -1,14 +1,26 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import crypto from "node:crypto";
-import { EventEmitter } from "node:events";
 import { Collection } from "@discordjs/collection";
 import type { KirishimaNodeOptions, KirishimaOptions } from "../typings/index.js";
 
 import { KirishimaNode } from "./Node.js";
 import { Player } from "./Player.js";
 
-export class Kirishima extends EventEmitter {
+import { TypedEmitter } from "tiny-typed-emitter";
+import { Gateway } from "@kirishima/ws";
+
+type KirishimaEvents = {
+    nodeDisconnect(node: KirishimaNode, gateway: Gateway, code: number): void;
+    nodeReconnect(node: KirishimaNode, gateway: Gateway, code: number): void;
+    nodeReconnectFailed(node: KirishimaNode, gateway: Gateway, code: number): void;
+    nodeError(node: KirishimaNode, gateway: Gateway, error: unknown): void;
+    nodeReady(node: KirishimaNode, gateway: Gateway, message: unknown): void;
+    nodeRaw(node: KirishimaNode, gateway: Gateway, message: unknown): void;
+    nodeConnect(node: KirishimaNode, gateway: Gateway): void;
+}
+
+export class Kirishima extends TypedEmitter<KirishimaEvents> {
     public nodes = new Collection<string, KirishimaNode>();
 
     public constructor(public options: KirishimaOptions) {

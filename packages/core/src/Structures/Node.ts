@@ -96,6 +96,7 @@ export class KirishimaNode {
                 }
                 this.kirishima.emit("nodeReady", this, gateway, raw);
             }
+            this.kirishima.emit("nodeRaw", this, gateway, raw);
         } catch (error) {
             this.kirishima.emit("nodeError", this, gateway, error);
         }
