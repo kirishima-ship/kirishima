@@ -20,7 +20,7 @@
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.11.30",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.3"
   },
@@ -28,6 +28,6 @@
     "@kirishima/fetch": "workspace:^",
     "@sapphire/async-queue": "^1.5.2",
     "lavalink-api-types": "^2.0.2",
-    "undici": "^6.6.2"
+    "undici": "^6.10.2"
   }
 }
