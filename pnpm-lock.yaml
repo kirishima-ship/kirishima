@@ -76,8 +76,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/fetch:
     dependencies:
@@ -92,8 +92,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/rest:
     dependencies:
@@ -117,8 +117,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/template:
     devDependencies:
@@ -129,8 +129,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/types:
     devDependencies:
@@ -141,8 +141,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/utilities:
     dependencies:
@@ -160,8 +160,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
   packages/ws:
     dependencies:
@@ -192,8 +192,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       typescript:
-        specifier: ^5.4.3
-        version: 5.4.3
+        specifier: ^5.4.4
+        version: 5.4.4
 
 packages:
 
@@ -2732,8 +2732,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.4.3:
-    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
+  /typescript@5.4.4:
+    resolution: {integrity: sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
