@@ -48,8 +48,8 @@ importers:
         specifier: ^2.6.6
         version: 2.6.6
       '@sapphire/utilities':
-        specifier: ^3.15.3
-        version: 3.15.3
+        specifier: ^3.16.2
+        version: 3.16.2
       discord-api-types:
         specifier: ^0.37.69
         version: 0.37.69
@@ -416,8 +416,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/utilities@3.15.3:
-    resolution: {integrity: sha512-K5dFGOB5XvblXFN+Av+Tch/dVBAifmxtZ9/2mFo8VqzbiaFJIRUuoPAoNsp8pWYaU423yV8bfD8WsCSNd9w1YQ==}
+  /@sapphire/utilities@3.16.2:
+    resolution: {integrity: sha512-0gRyXPH0hbmfZXwgvCH1z9H/kQwOlLeui86zKafZENpdjmuZznSkDFHRSUksr8Y5W/BxkqnR2WbNEfululh20Q==}
     engines: {node: '>=v14.0.0'}
     dev: false
 
