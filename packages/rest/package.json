@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/node": "^20.11.17",
     "rimraf": "^5.0.5",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "@kirishima/fetch": "workspace:^",
