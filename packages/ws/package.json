@@ -26,7 +26,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@sapphire/async-queue": "^1.5.2",
+    "@sapphire/async-queue": "^1.5.3",
     "tiny-typed-emitter": "^2.1.0",
     "ws": "^8.16.0"
   },
