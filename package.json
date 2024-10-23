@@ -13,8 +13,8 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "eslint": "^8.57.0",
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.10",
     "@hazmi35/eslint-config": "^13.3.1",
-    "turbo": "^1.12.4"
+    "turbo": "^1.13.4"
   }
 }

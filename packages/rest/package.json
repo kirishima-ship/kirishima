@@ -20,14 +20,14 @@
   "author": "kakushin-dev",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@types/node": "^20.11.17",
-    "rimraf": "^5.0.5",
+    "@types/node": "^20.17.0",
+    "rimraf": "^5.0.10",
     "typescript": "^5.5.4"
   },
   "dependencies": {
     "@kirishima/fetch": "workspace:^",
     "@sapphire/async-queue": "^1.5.3",
     "lavalink-api-types": "^2.0.2",
-    "undici": "^6.6.2"
+    "undici": "^6.20.1"
   }
 }
